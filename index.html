@@ -45,10 +45,10 @@ imageInput.addEventListener("change", function () {
 	})
 	reader.readAsDataURL(this.files[0]);
 	const imgPreview = document.getElementById("img-preview");
+	
 	// Color thief
 	const colorThief = new ColorThief();
     const img = document.querySelector('#img-preview');
-
     // Make sure image is finished loading
     if (img.complete) {
       colorThief.getColor(img);
@@ -59,7 +59,7 @@ imageInput.addEventListener("change", function () {
     }
   	console.log(colorThief); // [241, 221, 63]
 })
-})
+
 
 
 </script>
