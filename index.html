@@ -43,6 +43,7 @@
     <button class="modalButton" onclick="usefulFunctions.hideModal()">Got it!</button>
   </div>
   <div class="copyMessage">Text copied</div>
+
   <script>
 	//DOM declarations to make the coding down there esier
 const colorThief = new ColorThief();
@@ -105,6 +106,7 @@ const usefulFunctions = {
 
   //This is the best part, this function creates the cells that'll show the color and it's respective values, it'll append them in the palette div
   createCells(item) {
+	
     const newCell = document.createElement("div");
     newCell.classList.add("colorBox");
     newCell.setAttribute("id", "colorBox" + colorIndex);
@@ -149,6 +151,7 @@ const usefulFunctions = {
     colorContainer.appendChild(descContainer);
     palette.appendChild(colorContainer);
     colorIndex++;
+	document.getElementById ("color-values").value = document.querySelector(".hexValue").textContent;
   },
 
   //the getPalette() from Color Thief
@@ -243,6 +246,7 @@ file.onchange = (e) => {
   img.src = URL.createObjectURL(file.files[0]);
   usefulFunctions.testColorNumber();
   usefulFunctions.setBackgroundGradient();
+ 
 };
   </script>
 
