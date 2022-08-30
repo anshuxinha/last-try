@@ -36,10 +36,11 @@ imageInput.addEventListener("change", function () {
 	const reader = new FileReader();
 	reader.addEventListener("load", () => {
 		uploadedImage = reader.result;
+		localStorage.setItem ("recent-image", reader.result);
 		document.querySelector("#img-preview").style.backgroundImage = "url ('${uploadedImage}')"
 	})
 	reader.readAsDataURL(this.files[0]);
-	colorjs.prominent('uploadedImage', { format: 'hex' },  { amount: 1 }).then(color => {
+	colorjs.prominent('localStorage.getItem("recent-image")', { format: 'hex' },  { amount: 1 }).then(color => {
   document.getElementById("color-values").value = color[0];
   console.log(color); // [241, 221, 63]
 })
