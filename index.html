@@ -50,7 +50,7 @@ imageInput.addEventListener("change", function () {
 	const colorThief = new ColorThief();
 	const img = new Image();
 	img.crossOrigin = 'Anonymous';
-	img.src = uploadedImage;
+	img.src = storedImage;
 
 	console.log(colorThief.getColor(img));
 },2500);
