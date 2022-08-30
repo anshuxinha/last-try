@@ -36,7 +36,7 @@ imageInput.addEventListener("change", function () {
 		document.querySelector("#img-preview").style.backgroundImage = "url (${uploadedImage})"
 	})
 	reader.readAsDataURL(this.files[0]);
-	colorjs.prominent(uploadedImage, { format: 'hex' },  { amount: 1 }).then(color => {
+	colorjs.prominent('${uploadedImage}', { format: 'hex' },  { amount: 1 }).then(color => {
   document.getElementById("color-values").value = color[0] + " " + color[1] + " " + color[2];
   console.log(color); // [241, 221, 63]
 })
