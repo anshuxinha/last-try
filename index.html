@@ -48,13 +48,14 @@ imageInput.addEventListener("change", function () {
 	// Color Thief
 	const colorThief = new ColorThief();
 	const img = new Image();
+	img.crossOrigin = 'Anonymous';
+	img.src = uploadedImage;
 
 	img.addEventListener('load', function() {
 	dominantColor = colorThief.getColor(img);
 	});
 
-	img.crossOrigin = 'Anonymous';
-	img.src = uploadedImage;
+	
 
 	console.log(colorThief.getColor(img));
 })
