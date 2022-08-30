@@ -46,20 +46,15 @@ imageInput.addEventListener("change", function () {
 	reader.readAsDataURL(this.files[0]);
 	
 	// Color Thief
+	window.setTimeout (function () {
 	const colorThief = new ColorThief();
 	const img = new Image();
 	img.crossOrigin = 'Anonymous';
 	img.src = uploadedImage;
-	img.width = "200px";
-
-	img.addEventListener('load', function() {
-	dominantColor = colorThief.getColor(img);
-	});
-
-	
 
 	console.log(colorThief.getColor(img));
-})
+},1500);
+}
 
 </script>
 
