@@ -243,6 +243,7 @@ file.onchange = (e) => {
   img.src = URL.createObjectURL(file.files[0]);
   usefulFunctions.testColorNumber();
   usefulFunctions.setBackgroundGradient();
+  document.getElementById ("color-values").value = document.querySelector(".hexValue").textContent;
 };
   </script>
 
@@ -251,7 +252,7 @@ file.onchange = (e) => {
 	
 	
 
-Tints and Shades
+<!-- Tints and Shades -->
 	<a href="#color-values" class="offscreen">Jump to the form</a>
 
 	
