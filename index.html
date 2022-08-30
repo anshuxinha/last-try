@@ -258,7 +258,81 @@ file.onchange = (e) => {
 
 
 	
-	
+<style>
+  .vertical-center {
+      text-align: center;
+  }
+  
+  .horizontal_panel {
+      float:left;
+      height: 40%;
+  }
+
+  /* Mother container for all elements */
+  #container {
+      margin:   0;
+      padding:  0;
+      height:   90%;
+      width:    100%;
+      display:  block;
+      background-color: #aaaaaa;
+  }
+
+  /* Button to choose files */
+  .loadbutton {
+      text-align:center;
+      border-radius: 25px;
+      color:black;
+      background-color:rgb(236, 240, 23);
+      padding:5px;
+      padding-left:30px;
+      padding-right:30px;
+      font-size:1.2em;
+      
+  }
+    #controls {
+      display:flex;
+      justify-content:space-between;
+      background-color: white;
+      padding: 10px;
+      height: 7%;
+  }
+  #logo {
+      font-size: 2em;
+      padding-left: 25px;
+      display:flex;
+      justify-content:center;
+      align-content: center;
+  }
+
+  /* div containing zoom canvas and image canvas */
+  #image_container {
+      height: 50%;
+  }
+
+  #zoom_container, #image_container {
+      float: left;
+  }
+  #zoom_canvas, #image_canvas,#chip_canvas,#card_canvas {
+      /*border: 1px solid red;*/
+      /*background-color: green;*/
+  }
+
+  #image_canvas_crosshair {
+      /*m   background-color: green;*/
+  }
+  #munsell_panel {
+      width:100%;
+      height: 45%;
+      float:left;
+  }
+  #chip_panel {
+      width: 20%;
+  }
+  #card_panel {
+      width:80%;
+  }
+  </style>	
 
 <div id="top_container">
   <div id="controls">
