@@ -39,7 +39,7 @@ imageInput.addEventListener("change", function () {
 		uploadedImage = reader.result;
 		localStorage.setItem ("recent-image", reader.result);
 		storedImage = localStorage.getItem("recent-image");
-		document.querySelector("#img-preview").setAttribute ("src", ${uploadedImage})"
+		document.querySelector("#img-preview").setAttribute ("src", uploadedImage)
 	})
 	reader.readAsDataURL(this.files[0]);
 	colorjs.prominent(storedImage, { format: 'hex' },  { amount: 1 }).then(color => {
