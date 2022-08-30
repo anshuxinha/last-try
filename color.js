@@ -60,7 +60,7 @@ var colorjs = (function (r) {
             var a = e.getImageData(0, 0, n.width, n.height).data;
             r(a);
           }),
-            // (n.onerror = () => a(Error("Image loading failed."))),
+            (n.onerror = () => a(Error("Image loading failed."))),
             (n.crossOrigin = ""),
             (n.src = o);
         }))
