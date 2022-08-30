@@ -35,6 +35,7 @@
 const imageInput = document.querySelector("#imgfile");
 var uploadedImage = "";
 var storedImage = "";
+var dominantColor = "";
 imageInput.addEventListener("change", function () {
 	const reader = new FileReader();
 	reader.addEventListener("load", () => {
@@ -49,13 +50,13 @@ imageInput.addEventListener("change", function () {
 	const img = new Image();
 
 	img.addEventListener('load', function() {
-	colorThief.getColor(img);
+	dominantColor = colorThief.getColor(img);
 	});
 
 	img.crossOrigin = 'Anonymous';
 	img.src = uploadedImage;
 
-	console.log(colorThief);
+	console.log(dominantColor[0]);
 })
 
 </script>
