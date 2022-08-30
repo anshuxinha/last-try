@@ -166,7 +166,7 @@ input::-webkit-inner-spin-button {
 
 .modal {
   position: absolute;
-  diaplay: none;
+  display: none;
   z-index: 2;
 }
 
@@ -262,9 +262,6 @@ input::-webkit-inner-spin-button {
 *:before,
 *:after {
 	box-sizing: border-box;
-}
-html {
-	font-size: 62.5%;
 }
 
 body {
@@ -419,6 +416,8 @@ code {
 	-webkit-appearance: none;
 	resize: none;
 	width: 100%;
+	color: #000;
+	font-size: 20px;
 }
 
 .labels {

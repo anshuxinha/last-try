@@ -151,7 +151,10 @@ const usefulFunctions = {
     colorContainer.appendChild(descContainer);
     palette.appendChild(colorContainer);
     colorIndex++;
-	document.getElementById ("color-values").value = document.querySelector(".hexValue").textContent;
+	var hexValues = document.querySelectorAll(".hexValue");
+	for (let i = 0; i < hexValues.length; i++) {
+		document.getElementById ("color-values").value += hexValues[i] + " "
+	}
   },
 
   //the getPalette() from Color Thief
