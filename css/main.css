@@ -258,7 +258,7 @@ input::-webkit-inner-spin-button {
 }
 /*Custom end*/
 
-*,
+/* *,
 *:before,
 *:after {
 	box-sizing: border-box;
@@ -799,4 +799,4 @@ td.hex-value {
 	.hashtags {
 		flex-direction: column-reverse;
 	}
-}
+} */
