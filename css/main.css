@@ -481,6 +481,7 @@ code {
 	cursor: pointer;
 	font-size: 2rem;
 	font-weight: 400;
+	border: 1px solid #fff;
 }
 
 .button:hover,
@@ -592,8 +593,7 @@ td.hex-value {
 	padding: 0.5rem 0 2.5rem;
 	text-transform: lowercase;
 	cursor: default;
-	background-color: #ffffff;
-	backdrop-filter: saturate(180%) blur(10px);
+	background-color: rgba(242,242,242,0.8);
 	color:#000
 }
 
