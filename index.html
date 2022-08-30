@@ -260,70 +260,50 @@ file.onchange = (e) => {
 	
 	
 
-<!-- Tints and Shades -->
-	<a href="#color-values" class="offscreen">Jump to the form</a>
+<div id="top_container">
+  <div id="controls">
+    <div id="logo"><img style="padding-right:30px;" src="./Munsell Color System Tool_files/munsell_wheel_20.png" alt="ChromaMagic logo" width="50" height="50"><div style="display:table"><div style="display:table-cell; vertical-align:middle;">Munsell Color System Tool</div></div></div>
+    <input class="loadbutton" type="button" id="btnFileUpload" value="Choose File">
+    <input type="file" id="FileUpload1" style="display: none">
+    <input id="image_file" type="hidden" name="image_file" value="https://micheleclamp.com/ChromaMagic/image_files/Munsellwheel_allvalues_medium.png">
+    
+  </div>
+<div id="container">
+  <div id="image_container">
+    <canvas id="image_canvas" width="426" height="308"> </canvas>
+    <canvas style="position:absolute;z-index:3" id="image_canvas_crosshair"></canvas>
+  </div>
 
-	
-	<div class="ts-wrapper">
+  <div id="zoom_container">
+    <canvas id="zoom_canvas" width="1108" height="308"></canvas>
+    <canvas style="position: absolute; z-index: 3; left: 426px; top: 66.475px;" id="zoom_canvas_crosshair" width="1108" height="308"></canvas>
+  </div>
+  <div class="horizontal_panel" id="munsell_panel">
 
-		<header class="ts-header">
-			<div class="ts-headline">
-				<h1><a href="/">Tint &amp; Shade Generator</a></h1>
-			</div>
-		</header>
+  <div class="horizontal_panel" id="chip_panel">
+    <canvas id="chip_canvas" height="277" width="307"></canvas>
+  </div>
 
-		<main class="ts-content">
-
-			<div class="ts-form">
-				<form class="pure-form" id="color-entry-form" action="#" method="post" name="color-entry-form">
-					<div class="labels">
-						<div class="form-warning" id="warning">Please enter at least one valid hex color.</div>
-						<h2><label class="textarea-label" for="color-values">Enter hex colors (separated by spaces)</label></h2>
-					</div>
-					<div class="ts-input">
-						
-						<textarea id="color-values" name="color-values" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"></textarea>
-					</div>
-					<input id="loadmore" class="button" type="submit" value="Make tints and shades &nbsp;🎉" />
-				</form>
-			</div>
-
-			<div class="hashtags" id="ts-scroll-top">
-				<label class="switch" tabindex="0">
-					<input type="checkbox" id="copy-with-hashtag" tabindex="-1">
-				  <span class="control"></span>
-					<span class="label">Include hashtag when copying</span>
-				</label>
-			</div>
-
-			<div class="ts-colors">
-				<div id="tints-and-shades"></div>
-			</div>
-
-		</main>
+  <div class="horizontal_panel" id="card_panel">
+    <canvas id="card_canvas" width="1228" height="277"></canvas>
+  </div>
+</div>
+</div>
+</div>
 
 
-	</div>
 
-	<script src="./scripts/jquery-3.6.0.min.js"></script>
-	<script src="./scripts/tints-and-shades.js"></script>
-	<script src="./scripts/clipboard.min.js"></script>
-	<script src="./scripts/darken.js"></script>
-	<script>
-		var clipboard = new ClipboardJS('.hex-color');
+<script type="text/javascript" async="" src="./Munsell Color System Tool_files/analytics.js"></script><script src="./Munsell Color System Tool_files/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async="" src="./Munsell Color System Tool_files/js"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){window.dataLayer.push(arguments);}
+gtag('js', new Date());
 
-		clipboard.on('success', function(e) {
-			e.trigger.classList.add("copied");
-			setTimeout(function(){
-				e.trigger.blur();
-			}, 250);
-			setTimeout(function(){
-				e.trigger.classList.remove("copied");
-			}, 1500);
-
-			e.clearSelection();
-		});
-	</script>
+gtag('config', 'UA-111688540-1');
+</script>
+<script src="./Munsell Color System Tool_files/ChromaMagic_2022-08-26.js"></script>
 
 </body>
 
