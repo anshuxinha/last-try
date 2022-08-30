@@ -8,7 +8,7 @@
 	height: 211px;
 	border:solid 1px #000;
 	background-position: center;
-	background-size: contain;
+	object-fit: contain;
   }
   #palette-container {
 	display: flex;
