@@ -592,6 +592,9 @@ td.hex-value {
 	padding: 0.5rem 0 2.5rem;
 	text-transform: lowercase;
 	cursor: default;
+	background-color: #ffffff;
+	backdrop-filter: saturate(180%) blur(10px);
+	color:#000
 }
 
 .switch {
