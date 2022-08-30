@@ -32,12 +32,13 @@
 <script>
 const imageInput = document.querySelector("#imgfile");
 var uploadedImage = "";
+var storedImage = "";
 imageInput.addEventListener("change", function () {
 	const reader = new FileReader();
 	reader.addEventListener("load", () => {
 		uploadedImage = reader.result;
 		localStorage.setItem ("recent-image", reader.result);
-		var storedImage = localStorage.getItem("recent-image");
+		storedImage = localStorage.getItem("recent-image");
 		document.querySelector("#img-preview").style.backgroundImage = "url ('${uploadedImage}')"
 	})
 	reader.readAsDataURL(this.files[0]);
