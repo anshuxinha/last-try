@@ -33,15 +33,14 @@
 const imageInput = document.querySelector("#imgfile");
 var uploadedImage = "";
 var storedImage = "";
-var imgPreview = "";
 imageInput.addEventListener("change", function () {
 	const reader = new FileReader();
 	reader.addEventListener("load", () => {
 		uploadedImage = reader.result;
 		localStorage.setItem ("recent-image", reader.result);
 		storedImage = localStorage.getItem("recent-image");
-		document.querySelector("#img-preview").setAttribute ("src", uploadedImage)
-		imgPreview = document.getElementById("img-preview");
+		document.querySelector("#img-preview").setAttribute ("src", uploadedImage);
+		const imgPreview = document.getElementById("img-preview");
 	})
 	reader.readAsDataURL(this.files[0]);
 	colorjs.prominent(imgPreview, { format: 'hex' },  { amount: 1 }).then(color => {
