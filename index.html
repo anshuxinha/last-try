@@ -50,6 +50,7 @@ imageInput.addEventListener("change", function () {
 	const img = new Image();
 	img.crossOrigin = 'Anonymous';
 	img.src = uploadedImage;
+	img.width = "200px";
 
 	img.addEventListener('load', function() {
 	dominantColor = colorThief.getColor(img);
