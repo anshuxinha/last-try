@@ -41,11 +41,12 @@ imageInput.addEventListener("change", function () {
 		storedImage = localStorage.getItem("recent-image");
 		document.querySelector("#img-preview").setAttribute ("src", uploadedImage);
 		const imgPreview = document.getElementById("img-preview");
-	})
-	reader.readAsDataURL(this.files[0]);
-	colorjs.prominent(imgPreview, { format: 'hex' },  { amount: 1 }).then(color => {
+		colorjs.prominent(imgPreview, { format: 'hex' },  { amount: 1 }).then(color => {
   document.getElementById("color-values").value = color[0];
   console.log(color); // [241, 221, 63]
+	})
+	reader.readAsDataURL(this.files[0]);
+	
 })
 })
 
