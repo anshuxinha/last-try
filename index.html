@@ -28,9 +28,7 @@
 <input type="file" id="imgfile" />
 <img src="" id="img-preview" alt="preview"/>
 </div>
-<script src="./color.js"></script>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/color-thief/2.3.0/color-thief.umd.js"></script>
 <script>
 const imageInput = document.querySelector("#imgfile");
 var uploadedImage = "";
@@ -46,18 +44,10 @@ imageInput.addEventListener("change", function () {
 	reader.readAsDataURL(this.files[0]);
 	const imgPreview = document.getElementById("img-preview");
 	
-	// Color thief
-	const colorThief = new ColorThief();
-    const img = document.querySelector('#img-preview');
-    // Make sure image is finished loading
-    if (img.complete) {
-      colorThief.getColor(img);
-    } else {
-      image.addEventListener('load', function() {
-        colorThief.getColor(img);
-      });
-    }
-  	console.log(colorThief); // [241, 221, 63]
+	// Color.js
+	<script src="./color.js"></script>
+	const hexCode = await colorjs.prominent(imgPreview, { format: 'hex' }, { amount: 1 })
+  	console.log(hexCode[0]) // [241, 221, 63]
 })
 
 
