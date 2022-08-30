@@ -29,7 +29,8 @@
 <img src="" id="img-preview" alt="preview" crossorigin="anonymous"/>
 </div>
 
-<script src="./color.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/color-thief/2.3.0/color-thief.umd.js"></script>
+
 <script>
 const imageInput = document.querySelector("#imgfile");
 var uploadedImage = "";
@@ -44,9 +45,19 @@ imageInput.addEventListener("change", function () {
 	})
 	reader.readAsDataURL(this.files[0]);
 	const imgPreview = document.getElementById("img-preview");
-	// Color.js
-	const hexCode = colorjs.prominent(imgPreview, { format: 'hex' }, { amount: 1 })
-  	console.log(hexCode[0]) // [241, 221, 63]
+	
+	// Color Thief
+    const colorThief = new ColorThief();
+
+    // Make sure image is finished loading
+    if (imgPreview.complete) {
+      colorThief.getColor(imgPreview);
+    } else {
+		imgPreview.addEventListener('load', function() {
+        colorThief.getColor(imgPreview);
+      });
+    }
+	console.log(colorThief[0]);
 })
 
 </script>
