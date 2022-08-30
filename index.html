@@ -20,6 +20,29 @@
 </head>
 
 <body id="body">
+
+<!-- Color Pallete Extraction -->
+<h1>Color palette creator</h1>
+<input type="file" id="imgfile" />
+<div id="img-preview"></div>
+<script src="https://unpkg.com/color.js@1.2.0/dist/color.js"></script>
+<script>
+const imageInput = document.querySelector("#imgfile");
+var uploadedImage = "";
+imageInput.addEventListener("change", function () {
+	const reader = new FileReader();
+	reader.addEventListener("load", () => {
+		uploadedImage = reader.result;
+		document.querySelector("img-preview").style.backgroundImage = "url (${uploadedImage})"
+	})
+	reader.readAsDataURL(this.files[0]);
+	colorjs.prominent('uploadedImage', { format: 'hex' },  { amount: 1 }).then(color => {
+  document.getElementById("color-values").value = color[0] + " " + color[1] + " " + color[2];
+  console.log(color); // [241, 221, 63]
+})
+})
+
+</script>
 	
 
 <!-- Tints and Shades -->
@@ -89,20 +112,6 @@
 			e.clearSelection();
 		});
 	</script>
-	
-<!-- Color Pallete Extraction -->
-<h1>Color palette creator</h1>
-<form action="#">
-<input type="file" id="imgfile" />
-<input type="button" id="btnLoad" value="Load" onclick="main();" />
-</form>
-<script src="https://unpkg.com/color.js@1.2.0/dist/color.js"></script>
-<script>
-colorjs.prominent('favicon-32x32.png', { format: 'hex' },  { amount: 1 }).then(color => {
-  document.getElementById("color-values").value = color[0] + " " + color[1] + " " + color[2];
-  console.log(color); // [241, 221, 63]
-})
-</script>
 
 </body>
 
