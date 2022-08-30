@@ -43,7 +43,7 @@ imageInput.addEventListener("change", function () {
 	})
 	reader.readAsDataURL(this.files[0]);
 	const imgPreview = document.getElementById("img-preview");
-	colorjs.prominent(imgPreview, { format: 'hex' },  { amount: 1 }).then(color => {
+	colorjs.average(imgPreview, { format: 'hex' },  { amount: 1 }).then(color => {
  	document.getElementById("color-values").value = color[0];
   	console.log(color); // [241, 221, 63]
 })
