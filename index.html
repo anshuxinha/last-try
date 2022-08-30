@@ -26,7 +26,7 @@
 <h1>Color palette creator</h1>
 <label for="imgfile">Upload image</label>
 <input type="file" id="imgfile" />
-<img src="" id="img-preview" alt="preview" crossorigin="anonymous"/>
+
 </div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/color-thief/2.3.0/color-thief.umd.js"></script>
@@ -41,22 +41,21 @@ imageInput.addEventListener("change", function () {
 		uploadedImage = reader.result;
 		localStorage.setItem ("recent-image", reader.result);
 		storedImage = localStorage.getItem("recent-image");
-		document.querySelector("#img-preview").setAttribute ("src", uploadedImage);
 	})
 	reader.readAsDataURL(this.files[0]);
 	const imgPreview = document.getElementById("img-preview");
 	
 	// Color Thief
-    const colorThief = new ColorThief();
+	const colorThief = new ColorThief();
+	const img = new Image();
 
-    // Make sure image is finished loading
-    if (imgPreview.complete) {
-      colorThief.getColor(imgPreview);
-    } else {
-		imgPreview.addEventListener('load', function() {
-        colorThief.getColor(imgPreview);
-      });
-    }
+	img.addEventListener('load', function() {
+	colorThief.getColor(img);
+	});
+
+	img.crossOrigin = 'Anonymous';
+	img.src = uploadedImage;
+
 	console.log(colorThief[0]);
 })
 
