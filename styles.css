@@ -1,10 +1,4 @@
-#img-preview {
-  width: 375px;
-  height: 211px;
-  border:solid 1px #000;
-  background-position: center;
-  background-size: cover;
-}
+
 body {
   display: flex;
   justify-content: center;
