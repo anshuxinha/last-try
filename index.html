@@ -33,7 +33,7 @@ imageInput.addEventListener("change", function () {
 	const reader = new FileReader();
 	reader.addEventListener("load", () => {
 		uploadedImage = reader.result;
-		document.querySelector("img-preview").style.backgroundImage = "url (${uploadedImage})"
+		document.querySelector("#img-preview").style.backgroundImage = "url (${uploadedImage})"
 	})
 	reader.readAsDataURL(this.files[0]);
 	colorjs.prominent('uploadedImage', { format: 'hex' },  { amount: 1 }).then(color => {
