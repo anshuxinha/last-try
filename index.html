@@ -98,7 +98,7 @@
 </form>
 <script src="https://unpkg.com/color.js@1.2.0/dist/color.js"></script>
 <script>
-colorjs.prominent('favicon-32x32.png', { amount: 1 }).then(color => {
+colorjs.prominent('favicon-32x32.png', { format: 'hex' },  { amount: 1 }).then(color => {
   document.getElementById("color-values").textContent = color;
   console.log(color); // [241, 221, 63]
 })
