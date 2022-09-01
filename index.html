@@ -97,6 +97,7 @@
 
 /*Automatically feed HSL to input*/
 document.getElementById('file').addEventListener ('change', autofeed);
+var flag = 0;
 function autofeed() {
 setTimeout(waitforMunsell, 1500);
 function waitforMunsell () {
@@ -108,7 +109,8 @@ var hexValues = document.querySelectorAll('.hexValue');
       var hueInput = document.querySelectorAll("input.hue");
       hueInput[i].value = thehue;
       console.log("Auto function! thehue = " + thehue); 
-      page(thehue, i);
+      flag = i;
+      page(thehue, flag);
       if (i === 4) {
         waitForScroll();
       }
@@ -487,7 +489,7 @@ function makeLadder(colors) {
 
 function page(hue, i) {
   var page = document.getElementById("page");
-  if (i!=4) {
+  if (i<4) {
   page.innerHTML = "Fetching...";
   }
   else {
