@@ -368,6 +368,15 @@
 
       colorN.addEventListener("change", () => {
         usefulFunctions.testColorNumber(colorN.value);
+
+        /*Generate New*/
+        var inputBoxParent = document.querySelector(".hue-picker");
+        var el = "";
+        for (let i = 0; i < colorN.value; i++) {
+          el = document.createElement("input");
+          el.classList.add("hue");
+          inputBoxParent.appendChild(el);
+        }
       });
 
       file.onchange = (e) => {
@@ -375,20 +384,6 @@
         usefulFunctions.testColorNumber();
         usefulFunctions.setBackgroundGradient();
       };
-
-      /*Generate input boxes with colorN*/
-      var inputBoxParent = document.querySelector(".hue-picker");
-      var el = "";
-
-      colorN.addEventListener("change", generateInputBox(this.value));
-      function generateInputBox(theNumber) {
-        console.log(colorN.value + "hello");
-        for (let i = 0; i < Number(theNumber); i++) {
-          el = document.createElement("input");
-          el.classList.add("hue");
-          inputBoxParent.appendChild(el);
-        }
-      }
     </script>
 
     <style>
