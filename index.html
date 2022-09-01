@@ -184,11 +184,12 @@
       /*Generate input boxes with colorN*/
       var inputBoxParent = document.querySelector(".hue-picker");
       colorN.addEventListener("change", generateInputBox(this.value));
-      console.log(colorN.value);
       function generateInputBox(theNumber) {
-        for (var i = 0; i < theNumber; i++) {
+        console.log(colorN.value);
+        for (let i = 0; i < theNumber; i++) {
           const el = document.createElement("input");
           el.classList.add("hue");
+          inputBoxParent.appendChild(el);
         }
       }
 
