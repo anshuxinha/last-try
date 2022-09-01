@@ -96,7 +96,7 @@
 document.getElementById('file').addEventListener ('change', autofeed);
 
 function autofeed() {
-setTimeout(waitFunction, 2000);
+setTimeout(waitFunction, 1500);
 function waitFunction () {
 if (document.querySelector('.hexValue'))
 var hexValues = document.querySelectorAll('.hexValue');
@@ -106,6 +106,7 @@ var hexValues = document.querySelectorAll('.hexValue');
       var hueInput = document.querySelectorAll("input.hue");
       hueInput[i].value = thehue;
       console.log("Auto function! thehue = " + thehue); 
+      page(thehue);
     }
   }
   }
