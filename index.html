@@ -272,7 +272,7 @@ const usefulFunctions = {
   //This guy will test the color temperature, the values were decided based on a very coll discussion in stack overflow
   testColorTemperature(r, g, b){
      /*Automatically feed HSL to input*/
-     var hexValues = document.querySelectorAll('.hexValue');
+    var hexValues = document.querySelectorAll('.hexValue');
     for (let i=0; i < hexValues.length; i++)
     {
       var thehue = Math.floor((parseInt(hexToHSL(hexValues[i].textContent)) * 100)/360);
@@ -394,11 +394,11 @@ file.onchange = (e) => {
 </div>
 
 <div class="hue-picker">
-  <label>Hue: <input class="hue" value="" /><label>
-  <label>Hue: <input class="hue" value="" /><label>
-  <label>Hue: <input class="hue" value="" /><label>
-  <label>Hue: <input class="hue" value="" /><label>
-  <label>Hue: <input class="hue" value="" /><label>
+  <label>Hue: <input class="hue" value=" " /><label>
+  <label>Hue: <input class="hue" value=" " /><label>
+  <label>Hue: <input class="hue" value=" " /><label>
+  <label>Hue: <input class="hue" value=" " /><label>
+  <label>Hue: <input class="hue" value=" " /><label>
   
 </div>
   
