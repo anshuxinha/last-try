@@ -256,11 +256,11 @@ const usefulFunctions = {
 
     /*Automatically feed HSL to input*/
     var hexValues = document.querySelectorAll('.hexValue');
-    for (let i=0; i < hexValues.length; i++)
+    for (let i=0; i <= hexValues.length; i++)
     {
       var thehue = hexToHSL(hexValues[i].textContent);
-      var hueInput = document.querySelectorAll(".hue")
-      hueInput[i].value += thehue['h'];  
+      var hueInput = document.querySelectorAll(".hue");
+      hueInput[i].value = thehue['h'];  
     }
     if ((r >= 128 && r <= 255) && (g => 0 && g <= 128) && (b => 0 && b <= r)){
       console.log('warm: '+r+','+g+','+b)
