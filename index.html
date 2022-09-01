@@ -138,6 +138,7 @@ var hexValues = document.querySelectorAll('.hexValue');
       var hueHexInput = document.querySelector("input.hue");
       hueHexInput.value = theHexHue;
       console.log("Auto function! thehue = " + theHexHue); 
+      page(theHexHue);
     };
 }
 
@@ -499,7 +500,7 @@ function makeLadder(colors) {
 }
 
 
-function page(hue, i) {
+function page(hue) {
   var page = document.getElementById("page");
   page.innerHTML = "Good things come to those who wait...";
   fetchPage(hue).then(
