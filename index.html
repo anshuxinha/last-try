@@ -106,7 +106,7 @@ var hexValues = document.querySelectorAll('.hexValue');
       var hueInput = document.querySelectorAll("input.hue");
       hueInput[i].value = thehue;
       console.log("Auto function! thehue = " + thehue); 
-      page(thehue);
+      page(thehue, i);
     }
   }
   }
@@ -467,9 +467,11 @@ function makeLadder(colors) {
 }
 
 
-function page(hue) {
+function page(hue, i) {
   var page = document.getElementById("page");
+  if (i<5) {
   page.innerHTML = "Fetching...";
+  }
   fetchPage(hue).then(
     colors => {
       console.log("Page function");
