@@ -109,11 +109,13 @@ var hexValues = document.querySelectorAll('.hexValue');
       hueInput[i].value = thehue;
       console.log("Auto function! thehue = " + thehue); 
       page(thehue, i);
+      if (i === 4) {
+        waitForScroll();
+      }
     }
 
   /*Scroll to Munsell*/
-  setTimeout(waitforScroll, 5000);
-  function waitforScroll() {
+  function waitForScroll() {
   var colorBox = document.querySelectorAll('.colorBox');
     for (let j =0; j<colorBox.length; j++) {
       colorBox[j].addEventListener("click", () => {
