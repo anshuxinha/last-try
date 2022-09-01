@@ -111,7 +111,7 @@ var hexValues = document.querySelectorAll('.hexValue');
   var colorBox = document.querySelectorAll('.colorBox');
     for (let i =0; i<colorBox.length; i++) {
       colorBox[i].addEventListener("click", () => {
-        document.querySelector('.ladder-parent')[i+10].scrollIntoView();
+        document.querySelectorAll('.ladder-parent')[i+10].scrollIntoView();
       });
     }
   }
