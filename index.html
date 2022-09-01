@@ -131,7 +131,7 @@ var hexValues = document.querySelectorAll('.hexValue');
 
   /*Hex to Munsell and feed to Input box 1*/
   function useRegex(input) {
-    let regex = /\B#([a-z0-9]{2,})(?![~!@#$%^&*()=+_`\-\|\\/'\[\]\{\}]|[?.,]*\w)/i;
+    let regex = /#(?:[a-f\d]{3}){1,2}\b/i;
     if(regex.test(input)) {
       var directHex = hexToHSL(input);
       var theHexHue = Math.round(((parseInt(directHex) * 100)/360)/0.5)*0.5;
