@@ -1,3 +1,59 @@
+/*Munsell*/  
+  .hue {
+	cursor: pointer;
+  }
+  
+  .hue-picker {
+	margin: 25px 0;
+	font-size: 18px;
+	font-weight: bold;
+	text-align: center;
+	clear: both;
+  }
+  .hue-picker input {
+	padding: 5px;
+	font-size: 18px;
+  }
+  
+  .swatch {
+	color: #fff;
+	font-size: 0.7vw;
+	text-align: right;
+	padding: 5px 7px;
+	display: flex;
+	align-items: flex-end;
+	justify-content: flex-end;
+	border-radius: 2px;
+	overflow: hidden;
+  }
+  
+  .light {
+	color: #000;
+  }
+  
+  .ladder {
+	display: grid;
+	grid-template-columns: repeat(17, 1fr);
+	grid-template-rows: 1fr;
+	grid-gap: 4px;
+	height: 5.8vw;
+  }
+  #picker .ladder {
+	grid-template-columns: repeat(20, 1fr);
+	grid-template-rows: 1fr 1fr;
+	height: 10vw;
+  }
+  
+  .ladder::after {
+	  content: "";
+	  clear: both;
+	  display: table;
+  }
+  
+  .mini {
+	opacity: .5;
+  }
+/*End Munsell*/
 /*Custom*/
 @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 

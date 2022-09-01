@@ -334,51 +334,112 @@ file.onchange = (e) => {
   }
   </style>	
 
-<div id="top_container">
-  <div id="controls">
-    <div id="logo"><img style="padding-right:30px;" src="./Munsell Color System Tool_files/munsell_wheel_20.png" alt="ChromaMagic logo" width="50" height="50"><div style="display:table"><div style="display:table-cell; vertical-align:middle;">Munsell Color System Tool</div></div></div>
-    <input class="loadbutton" type="button" id="btnFileUpload" value="Choose File">
-    <label for="FileUpload1">Upload</label>
-    <input type="file" id="FileUpload1">
-    <input id="image_file" type="hidden" name="image_file" value="https://micheleclamp.com/ChromaMagic/image_files/Munsellwheel_allvalues_medium.png">
-    
-  </div>
-<div id="container">
-  <div id="image_container">
-    <canvas id="image_canvas" width="426" height="308"> </canvas>
-    <canvas style="position:absolute;z-index:3" id="image_canvas_crosshair"></canvas>
-  </div>
+<!-- Munsell -->
+<h1>Anshuman's custom Munsell color generator</h1>
 
-  <div id="zoom_container">
-    <canvas id="zoom_canvas" width="1108" height="308"></canvas>
-    <canvas style="position: absolute; z-index: 3; left: 426px; top: 66.475px;" id="zoom_canvas_crosshair" width="1108" height="308"></canvas>
-  </div>
-  <div class="horizontal_panel" id="munsell_panel">
-
-  <div class="horizontal_panel" id="chip_panel">
-    <canvas id="chip_canvas" height="277" width="307"></canvas>
-  </div>
-
-  <div class="horizontal_panel" id="card_panel">
-    <canvas id="card_canvas" width="1228" height="277"></canvas>
-  </div>
-</div>
-</div>
+<div id="picker">
 </div>
 
+<div class="hue-picker">
+  <label>Hue: <input id="hue" value="10R" /><label>
+</div>
+  
+<div id="page">
+</div>
 
-
-<script type="text/javascript" async="" src="./Munsell Color System Tool_files/analytics.js"></script><script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
-<!-- Global site tag (gtag.js) - Google Analytics -->
-<script async="" src="./Munsell Color System Tool_files/js"></script>
 <script>
-window.dataLayer = window.dataLayer || [];
-function gtag(){window.dataLayer.push(arguments);}
-gtag('js', new Date());
+  function fetchPage(hue) {
+  return fetch(`https://digitalpalette.herokuapp.com/v1/munsell/page?value_steps=9&chroma_steps=17&hue=${hue}`).then(
+    r => r.json()
+  )
+}
+function fetchRainbow() {
+  return fetch(`https://digitalpalette.herokuapp.com/v1/munsell/rainbow?value=6.5&chroma=14&offset=5&steps=40`).then(
+    r => r.json()
+  );
+} 
 
-gtag('config', 'UA-111688540-1');
+function makeSwatch(color) {
+  var swatch = document.createElement("div");
+  swatch.classList.add("swatch");
+  if (color.value >= 7) {
+      swatch.classList.add("light");
+  }
+  swatch.style.backgroundColor = color.hex;
+  swatch.innerText = color.name;
+  return swatch;
+}
+
+function makeMiniSwatch(color) {
+  var swatch = makeSwatch(color);
+  swatch.classList.add("mini");
+  swatch.innerHTML += "<br />(out of gamut)";
+  return swatch;
+}
+
+function makeNoSwatch() {
+  var swatch = document.createElement("div");
+  swatch.classList.add("swatch");
+  return swatch;
+}
+
+function makeLadder(colors) {
+  var ladder = document.createElement("div");
+  ladder.classList.add("ladder");
+  colors.forEach(color => {
+    if (!color.imprecise) {
+      ladder.appendChild(makeSwatch(color))
+    } else if (color.clipped && color.attempted_chroma == color.chroma) {
+      ladder.appendChild(makeMiniSwatch(color))
+    } else {
+      ladder.appendChild(makeNoSwatch(color))
+    }
+  });
+  return ladder;
+}
+
+
+function page(hue) {
+  var page = document.getElementById("page");
+  page.innerHTML = "Fetching...";
+  fetchPage(hue).then(
+    colors => {
+      page.innerHTML = "";
+      colors.reverse();
+      colors.forEach(ladder => page.appendChild(makeLadder(ladder)));
+    }
+  );
+}
+
+function newPage(e) {
+  page(e.target.value);
+}
+
+function setHue(hue) {
+  document.getElementById("hue").value = hue
+  page(hue);
+}
+
+function makeHueSwatch(color) {
+  var swatch = makeSwatch(color);
+  swatch.addEventListener("click", () => setHue(color.hue.toFixed(1)));
+  swatch.classList.add("hue");
+  return swatch;
+}
+
+function makeRainbow(colors) {
+  var ladder = document.createElement("div");
+  ladder.classList.add("ladder");
+  colors.forEach(color => {
+     ladder.appendChild(makeHueSwatch(color))
+  });
+  document.getElementById("picker").appendChild(ladder)
+}
+
+document.getElementById("hue").addEventListener("change", newPage)
+page(10);
+fetchRainbow().then(makeRainbow);
 </script>
-<script src="./Munsell Color System Tool_files/ChromaMagic_2022-08-26.js"></script>
 
 </body>
 
