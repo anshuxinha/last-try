@@ -150,6 +150,15 @@ const usefulFunctions = {
     colorContainer.appendChild(descContainer);
     palette.appendChild(colorContainer);
     colorIndex++;
+
+    const munsell = require('munsell');
+    var hexValues = document.querySelectorAll('.hexValue');
+    for (let i=0; i < hexValues.length; i++)
+    {
+      var thehue = munsell.hexToMhvc(hexValues[i].textContent);
+      document.getElementById("hue").textContent += thehue + " "; 
+    }
+    
   },
 
   //the getPalette() from Color Thief
