@@ -181,6 +181,15 @@ const usefulFunctions = {
     colorContainer.appendChild(descContainer);
     palette.appendChild(colorContainer);
     colorIndex++;
+    /*Automatically feed HSL to input*/
+    var hexValues = document.querySelectorAll('.hexValue');
+    for (let i=0; i < hexValues.length; i++)
+    {
+      var thehue = hexToHSL(hexValues[i].textContent);
+      var hueInput = document.querySelectorAll(".hue");
+      hueInput[i].value = thehue['h'];
+      console.log("Auto function! thehue = " + thehue['h']); 
+    }
   },
 
   //the getPalette() from Color Thief
@@ -254,15 +263,7 @@ const usefulFunctions = {
   //This guy will test the color temperature, the values were decided based on a very coll discussion in stack overflow
   testColorTemperature(r, g, b){
 
-    /*Automatically feed HSL to input*/
-    var hexValues = document.querySelectorAll('.hexValue');
-    for (let i=0; i < hexValues.length; i++)
-    {
-      var thehue = hexToHSL(hexValues[i].textContent);
-      var hueInput = document.querySelectorAll(".hue");
-      hueInput[i].value = thehue['h'];
-      console.log("Auto function! thehue = " + thehue['h']); 
-    }
+    
     if ((r >= 128 && r <= 255) && (g => 0 && g <= 128) && (b => 0 && b <= r)){
       console.log('warm: '+r+','+g+','+b)
       isWarmColor = "- Warm"
