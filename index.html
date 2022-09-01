@@ -93,7 +93,7 @@
 }
 
 /*Automatically feed HSL to input*/
-document.getElementById('file').onchange (autofeed);
+document.getElementById('file').addEventListener ('change', autofeed);
 function autofeed() {
 if (document.querySelector('.hexValue'))
 var hexValues = document.querySelectorAll('.hexValue');
