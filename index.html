@@ -469,8 +469,11 @@ function makeLadder(colors) {
 
 function page(hue, i) {
   var page = document.getElementById("page");
-  if (i=5) {
-  page.innerHTML = " ";
+  if (i!=5) {
+  page.innerHTML = "Fetching...";
+  }
+  else {
+    page.page.innerHTML = " ";
   }
   fetchPage(hue).then(
     colors => {
