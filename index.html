@@ -259,8 +259,11 @@ const usefulFunctions = {
     for (let i=0; i < hexValues.length; i++)
     {
       var thehue = hexToHSL(hexValues[i].textContent);
-      console.log(thehue);
-      document.getElementById("hue").value += thehue['h'] + " "; 
+      document.getElementById("hue").value += thehue[0]['h']; 
+      document.getElementById("hue1").value += thehue[1]['h']; 
+      document.getElementById("hue2").value += thehue[2]['h']; 
+      document.getElementById("hue3").value += thehue[3]['h']; 
+      document.getElementById("hue4").value += thehue[4]['h']; 
     }
     if ((r >= 128 && r <= 255) && (g => 0 && g <= 128) && (b => 0 && b <= r)){
       console.log('warm: '+r+','+g+','+b)
