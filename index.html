@@ -475,7 +475,10 @@ function makeRainbow(colors) {
   document.getElementById("picker").appendChild(ladder)
 }
 
-document.querySelectorAll(".hue").addEventListener("change", newPage)
+var hueChange = document.querySelectorAll(".hue");
+for (let i = 0; i < hueChange.length; i++) {
+  hueChange[i].addEventListener("change", newPage);
+}
 fetchRainbow().then(makeRainbow);
 </script>
 
