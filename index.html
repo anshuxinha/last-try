@@ -131,6 +131,7 @@ var hexValues = document.querySelectorAll('.hexValue');
 
   /*Hex to Munsell and feed to Input box 1*/
   function useRegex(input) {
+    if (input.length === 6) {
     let regex = /#(?:[a-f\d]{3}){1,2}\b/i;
     if(regex.test(input)) {
       var directHex = hexToHSL(input);
@@ -140,6 +141,7 @@ var hexValues = document.querySelectorAll('.hexValue');
       console.log("Auto function! thehue = " + theHexHue); 
       page(theHexHue);
     };
+  }
 }
 
   
