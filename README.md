@@ -1,77 +1,50 @@
-# [<img src="https://maketintsandshades.com/favicon.ico" width="25px" />](https://maketintsandshades.com) &nbsp;[Tint & Shade Generator](https://maketintsandshades.com)
+# munsell.js - library for handling Munsell Color System
 
-[<img alt="Screenshot of app home page" src="images/screenshot-1.png" />](https://maketintsandshades.com)
-[<img alt="Screenshot of color swatches after submitting form" src="images/screenshot-2.png" />](https://maketintsandshades.com)
-[<img alt="Perfect score on Lighthouse" title="Click to see full Lighthouse report" src="images/lighthouse.png" />](https://maketintsandshades.com/lighthouse)
+[![Build Status](https://github.com/privet-kitty/munsell.js/actions/workflows/ci-master.yml/badge.svg)](https://github.com/privet-kitty/munsell.js/actions)
+[![Coverage Status](https://coveralls.io/repos/github/privet-kitty/munsell.js/badge.svg?branch=master)](https://coveralls.io/github/privet-kitty/munsell.js?branch=master)
 
-## What is the Tint & Shade Generator?
-The purpose of this tool is to accurately produce tints (pure white added) and shades (pure black added) of a given hex color in 10% increments.
+munsell.js is a library for JavaScript and Node.js, whose main facility is converting Munsell Color to/from other color spaces (e.g. RGB).
 
-## Why is this tool unique?
-It takes the math seriously. In my experience similar tools get the calculation incorrect due to rounding errors, creator preferences, or other inconsistencies.
+_[API Reference](https://privet-kitty.github.io/munsell.js/modules.html) provides the details beyond this README file._
 
-Testing shows that the output matches Chrome DevTools' calculation method as well as some [established](https://css-tricks.com/snippets/sass/tint-shade-functions), [popular](https://sindresorhus.com/sass-extras/#color-function-tint) methods to derive tints and shades via Sass.
+## Getting started
 
+### Install
 
-## When would I use this?
-It's best used when you already have some base colors but would like complimentary colors for gradients, borders, backgrounds, shadows or other elements.
+```
+$ npm install munsell
+```
 
-This is useful for designers who may be communicating color intent to developers who use Sass or PostCSS in their builds. It's also a solid way to quickly preview what tints and shades look like for a base color you may be considering for your design.
+### Load
 
-## Calculation method
-The given hex color is first converted to RGB. Then each component of the RGB color has the following calculation performed on it, respectively.
+#### ES module
 
-- **Tints:** `New value = current value + ((255 - current value) x tint factor)`
-- **Shades:** `New value = current value x shade factor`
+```javascript
+import * as munsell from 'munsell';
 
-The new value is rounded if necessary, and then converted back to hex for display.
+munsell.munsellToRgb255('2.3YR 6.7/4.22');
+// => [ 201, 156, 135 ]
+```
 
-## Example calculation
-Let's say we want tints and shades of [Rebecca Purple](https://meyerweb.com/eric/thoughts/2014/06/19/rebeccapurple/), #663399.
+#### CommonJS
 
-#### 10% tint
-1. #663399 is converted to the RGB equivalent of 102, 51, 153
-1. **R:** `102 + ((255 - 102) x .1) = 117.3`, rounded to 117
-1. **G:** `51 + ((255 - 51) x .1) = 71.4`, rounded to 71
-1. **B:** `153 + ((255 - 153) x .1) = 163.2`, rounded to 163
-1. RGB 117, 71, 163 is converted to the hex equivalent of #7547a3
+```javascript
+const munsell = require('munsell');
 
-#### 10% shade
-1. #663399 is converted to the RGB equivalent of 102, 51, 153
-1. **R:** `102 x .9 = 91.8`, rounded to 92
-1. **G:** `51 x .9 = 45.9`, rounded to 46
-1. **B:** `153 x .9 = 137.7`, rounded to 138
-1. RGB 92, 46, 138 is converted to the hex equivalent of #5c2e8a
+munsell.hexToMhvc('#ABCDEF');
+// => [ 73.43648829473781, 8.05763439330249, 5.304123165279228 ]
+```
 
-## Feedback and contributing
-This project is open source and I'd love your help!
+## Mechanism
 
-If you notice a bug or want a feature added please [file an issue on GitHub](https://github.com/edelstone/tints-and-shades/issues/new). If you don't have an account there, just [email me](mailto:michael.edelstone@gmail.com) the details.
+munsell.js expresses the Munsell Color in two ways, a string or triplet of numbers, which can be identified by the name of method. The former is `munsell`, the standard string specification of the Munsell Color: e.g. `"4.2RP 3/11"`, `"N 10"`. The latter is `mhvc`, or Munsell HVC, its 3-number expression composed of [Hue, Value, Chroma]: e.g. `[94.2, 3, 11]`, `[0, 10 ,0]`.
 
-If you're a developer and want to help with the project, please comment on [open issues](https://github.com/edelstone/tints-and-shades/issues) or create a new one and communicate your intentions. Once we agree on a path forward you can just make a pull request and take it to the finish line.
+The underlying data of this library is the [Munsell Renotation Data](https://www.rit.edu/cos/colorscience/rc_munsell_renotation.php). Since this data assume the illuminant to be the Standard Illuminant C, munsell.js uses the Bradford transformation as CAT to other illumnants (e.g. D65).
 
-## Support this project
-The Tint & Shade Generator will always be free but your support is greatly appreciated.
+munsell.js inter- and extrapolates the data via LCHab space, the method of which is in common with [dufy](https://github.com/privet-kitty/dufy), my color library for Common Lisp. The inversion from LCHab to Munsell Color is based on the method suggested by Paul Centore. See the links and articles for more information.
 
-- [Buy Me a Coffee](https://www.buymeacoffee.com/edelstone)
-- [Venmo](https://venmo.com/michaeledelstone)
-- [Cash App](https://cash.app/$edelstone)
-- [Paypal](https://www.paypal.me/edelstone)
+- Centore, Paul. (2012). An open-source inversion algorithm for the Munsell renotation. Color Research & Application. 37. 10.1002/col.20715.
 
-## Credits
-[Michael Edelstone](https://michaeledelstone.com) designed and organized the project with big-time assistance from [Nick Wing](https://github.com/wickning1) on the color calculations.
+## Copyright
 
-We use these amazing open-source libraries across the project:
-
-- [Darken](https://colinespinas.github.io/darken/)
-- [clipboard.js](https://clipboardjs.com/)
-- [jQuery](https://jquery.com/)
-
-Many thanks to [Joel Carr](https://github.com/joelcarr), [Sebastian Gutierrez](https://github.com/pepas24), [Tim Scalzo](https://github.com/TJScalzo), [Aman Agarwal](https://github.com/AmanAgarwal041), [Aleksandr Hovhannisyan](https://github.com/AleksandrHovhannisyan), and [Shubhendu Sen](https://github.com/Sen-442b) for their valuable contributions.
-
-## Other details
-- Typography: [Work Sans](https://weiweihuanghuang.github.io/Work-Sans/) by Wei Huang</li>
-- Colors: [#000000](https://maketintsandshades.com/#000000), [#ffffff](https://maketintsandshades.com/#ffffff), [#e96443](https://maketintsandshades.com/#e96443), and [#ca228e](https://maketintsandshades.com/#ca228e)
-- Performance: We have a perfect score on Google's web page auditing tool, Lighthouse. Check out [the full report](https://maketintsandshades.com/lighthouse).
-- Privacy: We use Google Analytics to record basic information about your visit strictly to improve the application and understand the people who use it.
-- Like Google's Material Design? Try [this other thing I made](https://materialpalettes.com).
+Copyright (c) 2018-2021 Hugo Sansaqua.
