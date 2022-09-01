@@ -257,7 +257,7 @@ const usefulFunctions = {
     var hexValues = document.querySelectorAll('.hexValue');
     for (let i=0; i < hexValues.length; i++)
     {
-      var thehue = hexToHSL(hexValues[i]);
+      var thehue = hexToHSL(hexValues[i].textContent);
       console.log(thehue);
       document.getElementById("hue").value += thehue['h'] + " "; 
     }
