@@ -1,9 +1,0 @@
-node_modules/
-doc/
-coverage/
-lib/
-\#*
-.\#*
-*~
-src/.tern-port
-dist/

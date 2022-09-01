@@ -44,7 +44,37 @@
   </div>
   <div class="copyMessage">Text copied</div>
 
+
   <script>
+    /*Hex to HSL*/
+    function hexToHSL(hex) {
+  var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+    r = parseInt(result[1], 16);
+    g = parseInt(result[2], 16);
+    b = parseInt(result[3], 16);
+    r /= 255, g /= 255, b /= 255;
+    var max = Math.max(r, g, b), min = Math.min(r, g, b);
+    var h, s, l = (max + min) / 2;
+    if(max == min){
+      h = s = 0; // achromatic
+    }else{
+      var d = max - min;
+      s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
+      switch(max){
+        case r: h = (g - b) / d + (g < b ? 6 : 0); break;
+        case g: h = (b - r) / d + 2; break;
+        case b: h = (r - g) / d + 4; break;
+      }
+      h /= 6;
+    }
+  var HSL = new Object();
+  HSL['h']=h;
+  HSL['s']=s;
+  HSL['l']=l;
+  return HSL;
+}
+
+/*Color Extractor Script*/
 	//DOM declarations to make the coding down there esier
 const colorThief = new ColorThief();
 const img = document.querySelector("img");
@@ -222,11 +252,14 @@ const usefulFunctions = {
   
   //This guy will test the color temperature, the values were decided based on a very coll discussion in stack overflow
   testColorTemperature(r, g, b){
-    var hexValues = document.querySelectorAll('.hexValue');
 
+    /*Automatically feed HSL to input*/
+    var hexValues = document.querySelectorAll('.hexValue');
     for (let i=0; i < hexValues.length; i++)
     {
-      document.getElementById("hue").value += hexValues[i].textContent + " "; 
+      var thehue = hexToHSL(hexValues[i]);
+      console.log(thehue);
+      document.getElementById("hue").value += thehue['h'] + " "; 
     }
     if ((r >= 128 && r <= 255) && (g => 0 && g <= 128) && (b => 0 && b <= r)){
       console.log('warm: '+r+','+g+','+b)
