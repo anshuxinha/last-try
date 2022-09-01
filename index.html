@@ -260,7 +260,8 @@ const usefulFunctions = {
     {
       var thehue = hexToHSL(hexValues[i].textContent);
       var hueInput = document.querySelectorAll(".hue");
-      hueInput[i].value = thehue['h']; 
+      hueInput[i].value = thehue['h'];
+      console.log("Auto function! thehue = " + thehue[h]); 
       page(thehue['h']); 
     }
     if ((r >= 128 && r <= 255) && (g => 0 && g <= 128) && (b => 0 && b <= r)){
@@ -444,6 +445,7 @@ function page(hue) {
   page.innerHTML = "Fetching...";
   fetchPage(hue).then(
     colors => {
+      console.log("Page function");
       page.innerHTML += "";
       colors.reverse();
       colors.forEach(ladder => page.appendChild(makeLadder(ladder)));
