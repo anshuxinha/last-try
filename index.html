@@ -113,12 +113,14 @@ var hexValues = document.querySelectorAll('.hexValue');
 
   /*Scroll to Munsell*/
   setTimeout(waitforScroll, 5000);
+  function waitforScroll() {
   var colorBox = document.querySelectorAll('.colorBox');
     for (let i =0; i<colorBox.length; i++) {
       colorBox[i].addEventListener("click", () => {
         document.querySelectorAll('.ladder')[i+9].scrollIntoView();
       });
     }
+  }
   }
   }
 
