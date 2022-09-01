@@ -95,8 +95,8 @@
 /*Automatically feed HSL to input*/
 document.getElementById('file').addEventListener ('change', autofeed);
 function autofeed() {
-setTimeout(waitFunction, 1500);
-function waitFunction () {
+setTimeout(waitforMunsell, 1500);
+function waitforMunsell () {
 if (document.querySelector('.hexValue'))
 var hexValues = document.querySelectorAll('.hexValue');
     for (let i=0; i < hexValues.length; i++)
@@ -107,11 +107,13 @@ var hexValues = document.querySelectorAll('.hexValue');
       console.log("Auto function! thehue = " + thehue); 
       page(thehue, i);
     }
-    /*Scroll to Munsell*/
+
+  /*Scroll to Munsell*/
+  setTimeout(waitforScroll, 5000);
   var colorBox = document.querySelectorAll('.colorBox');
     for (let i =0; i<colorBox.length; i++) {
       colorBox[i].addEventListener("click", () => {
-        document.querySelectorAll('.ladder-parent')[i+10].scrollIntoView();
+        document.querySelectorAll('.ladder-parent')[i+9].scrollIntoView();
       });
     }
   }
