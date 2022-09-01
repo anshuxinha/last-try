@@ -1,4 +1,7 @@
 /*Munsell*/  
+html {
+	scroll-behavior: smooth;
+}
 #page {
 	color: #fff;
 }
