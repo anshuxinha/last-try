@@ -434,7 +434,8 @@ code {
 	width: 100%;
 }
 .ladder:nth-child(9n) {
-    margin-bottom: 50px;
+    margin-top: 25px;
+	margin-bottom: 25px;
 }
 .ts-form textarea {
 	padding: 1.2rem;
