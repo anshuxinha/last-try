@@ -222,13 +222,11 @@ const usefulFunctions = {
   
   //This guy will test the color temperature, the values were decided based on a very coll discussion in stack overflow
   testColorTemperature(r, g, b){
-    const munsell = require('munsell');
     var hexValues = document.querySelectorAll('.hexValue');
 
     for (let i=0; i < hexValues.length; i++)
     {
-      var thehue = munsell.hexToMhvc(hexValues[i].textContent);
-      document.getElementById("hue").value += thehue + " "; 
+      document.getElementById("hue").value += hexValues[i].textContent + " "; 
     }
     if ((r >= 128 && r <= 255) && (g => 0 && g <= 128) && (b => 0 && b <= r)){
       console.log('warm: '+r+','+g+','+b)
