@@ -156,7 +156,8 @@ const usefulFunctions = {
     for (let i=0; i < hexValues.length; i++)
     {
       var thehue = munsell.hexToMhvc(hexValues[i].textContent);
-      document.getElementById("hue").textContent += thehue + " "; 
+      console.log(thehue);
+      document.getElementById("hue").textContent += hexValues[i].textContent + " "; 
     }
     
   },
