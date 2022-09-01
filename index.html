@@ -143,16 +143,6 @@
         }
       }
 
-      /*Generate input boxes with colorN*/
-      var inputBoxParent = document.querySelector(".hue-picker");
-      colorN.addEventListener("change", generateInputBox(this.value));
-      function generateInputBox(theNumber) {
-        for (var i = 0; i < theNumber; i++) {
-          const el = document.createElement("input");
-          el.classList.add("hue");
-        }
-      }
-
       /*Hex to Munsell and feed to Input box 1*/
       function useRegex(input) {
         if (input.length === 7) {
@@ -190,6 +180,16 @@
       let colorIndex = 0;
       let colorArray = [];
       let isWarmColor;
+
+      /*Generate input boxes with colorN*/
+      var inputBoxParent = document.querySelector(".hue-picker");
+      colorN.addEventListener("change", generateInputBox(this.value));
+      function generateInputBox(theNumber) {
+        for (var i = 0; i < theNumber; i++) {
+          const el = document.createElement("input");
+          el.classList.add("hue");
+        }
+      }
 
       //I put all the function here, just to keep it organized
       const usefulFunctions = {
