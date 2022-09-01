@@ -256,7 +256,7 @@ const usefulFunctions = {
 
     /*Automatically feed HSL to input*/
     var hexValues = document.querySelectorAll('.hexValue');
-    for (let i=0; i <= hexValues.length; i++)
+    for (let i=0; i < hexValues.length; i++)
     {
       var thehue = hexToHSL(hexValues[i].textContent);
       var hueInput = document.querySelectorAll(".hue");
