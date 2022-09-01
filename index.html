@@ -185,7 +185,7 @@
       var inputBoxParent = document.querySelector(".hue-picker");
       colorN.addEventListener("change", generateInputBox(this.value));
       function generateInputBox(theNumber) {
-        console.log(colorN.value);
+        console.log(colorN.value + "hello");
         for (let i = 0; i < theNumber; i++) {
           const el = document.createElement("input");
           el.classList.add("hue");
