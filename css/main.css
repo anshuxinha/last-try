@@ -411,12 +411,6 @@ code {
 	}
 }
 
-.ts-wrapper {
-	padding: 2rem;
-	max-width: 80rem;
-	margin: 0 auto 4rem;
-}
-
 .anshumun-header {
 	margin: 4rem auto 8rem;
 }
@@ -440,29 +434,8 @@ code {
 	width: 100%;
 }
 
-.ts-content {
-	margin-bottom: 10rem;
-}
-
-.ts-form form {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	justify-content: center;
-}
-
-.ts-form h2 {
-	font-weight: normal;
-	font-size: 2.5rem;
-	line-height: 1.3;
-	margin: 0;
-}
-
-.ts-input {
-	display: flex;
-	max-width: 60rem;
-	margin: 1rem auto 2rem;
-	width: 100%;
+.ladder:nth-child(9n) {
+    margin-bottom: 50px;
 }
 
 .ts-form textarea {
