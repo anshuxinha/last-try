@@ -75,7 +75,8 @@
 }
 
 /*Color Extractor Script*/
-	//DOM declarations to make the coding down there esier
+
+//DOM declarations to make the coding down there esier
 const colorThief = new ColorThief();
 const img = document.querySelector("img");
 const setter = document.querySelector(".setter");
@@ -373,6 +374,11 @@ file.onchange = (e) => {
 
 <div class="hue-picker">
   <label>Hue: <input id="hue" value="" /><label>
+  <label>Hue: <input id="hue1" value="" /><label>
+  <label>Hue: <input id="hue2" value="" /><label>
+  <label>Hue: <input id="hue3" value="" /><label>
+  <label>Hue: <input id="hue4" value="" /><label>
+  
 </div>
   
 <div id="page">
@@ -447,7 +453,7 @@ function newPage(e) {
 }
 
 function setHue(hue) {
-  document.getElementById("hue").value = hue
+  // document.getElementById("hue").value = hue
   page(hue);
 }
 
@@ -468,7 +474,11 @@ function makeRainbow(colors) {
 }
 
 document.getElementById("hue").addEventListener("change", newPage)
-page(10);
+document.getElementById("hue1").addEventListener("change", newPage)
+document.getElementById("hue2").addEventListener("change", newPage)
+document.getElementById("hue3").addEventListener("change", newPage)
+document.getElementById("hue4").addEventListener("change", newPage)
+
 fetchRainbow().then(makeRainbow);
 </script>
 
