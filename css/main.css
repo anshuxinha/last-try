@@ -2,6 +2,10 @@
 html {
 	scroll-behavior: smooth;
 }
+.ladder:nth-child((n*9)+1) {
+	margin-top:25px;
+	margin-bottom:25px;
+}
 #page {
 	color: #fff;
 }
