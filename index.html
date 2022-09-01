@@ -444,7 +444,7 @@ function page(hue) {
   page.innerHTML = "Fetching...";
   fetchPage(hue).then(
     colors => {
-      page.innerHTML = "";
+      page.innerHTML += "";
       colors.reverse();
       colors.forEach(ladder => page.appendChild(makeLadder(ladder)));
     }
