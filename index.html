@@ -203,7 +203,7 @@ const usefulFunctions = {
     var hexValues = document.querySelectorAll('.hexValue');
     for (let i=0; i < hexValues.length; i++)
     {
-      var thehue = hexToHSL(hexValues[i].textContent);
+      var thehue = Math.floor((parseInt(hexToHSL(hexValues[i].textContent)) * 100)/360);
       var hueInput = document.querySelectorAll(".hue");
       hueInput[i].value = thehue;
       console.log("Auto function! thehue = " + thehue); 
