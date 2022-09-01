@@ -1,4 +1,7 @@
 /*Munsell*/  
+#page {
+	color: #fff;
+}
   .hue {
 	cursor: pointer;
   }
@@ -418,11 +421,11 @@ code {
 	margin: 4rem auto 8rem;
 }
 
-.ts-header h1 {
+.ansumun-h1 {
 	margin: 0;
 }
 
-.ts-headline h1 a {
+.ansumun-h1 {
 	background: linear-gradient(to right, #e96443, #ca228e);
 	border-radius: 3px;
 	margin-bottom: 0;
