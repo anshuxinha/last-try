@@ -231,12 +231,11 @@ const usefulFunctions = {
     }
     return isWarmColor
 
-    const munsell = require('munsell');
+   
     var hexValues = document.querySelectorAll('.hexValue');
     for (let i=0; i < hexValues.length; i++)
     {
-      var thehue = munsell.hexToMhvc(hexValues[i].textContent);
-      console.log(thehue);
+      
       document.getElementById("hue").textContent += hexValues[i].textContent + " "; 
     }
   }
