@@ -260,7 +260,8 @@ const usefulFunctions = {
     {
       var thehue = hexToHSL(hexValues[i].textContent);
       var hueInput = document.querySelectorAll(".hue");
-      hueInput[i].value = thehue['h'];  
+      hueInput[i].value = thehue['h']; 
+      page(thehue['h']); 
     }
     if ((r >= 128 && r <= 255) && (g => 0 && g <= 128) && (b => 0 && b <= r)){
       console.log('warm: '+r+','+g+','+b)
@@ -479,7 +480,7 @@ var hueChange = document.querySelectorAll(".hue");
 for (let v = 0; v < hueChange.length; v++) {
   hueChange[v].addEventListener("change", newPage);
 }
-page(10);
+
 fetchRainbow().then(makeRainbow);
 </script>
 
