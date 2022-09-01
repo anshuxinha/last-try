@@ -433,11 +433,9 @@ code {
 	display: inline-block;
 	width: 100%;
 }
-
 .ladder:nth-child(9n) {
     margin-bottom: 50px;
 }
-
 .ts-form textarea {
 	padding: 1.2rem;
 	min-height: 25rem;
