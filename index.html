@@ -94,7 +94,6 @@
 
 /*Automatically feed HSL to input*/
 document.getElementById('file').addEventListener ('change', autofeed);
-
 function autofeed() {
 setTimeout(waitFunction, 1500);
 function waitFunction () {
@@ -109,7 +108,17 @@ var hexValues = document.querySelectorAll('.hexValue');
       page(thehue, i);
     }
   }
+  
+  /*Scroll to Munsell*/
+  var colorBox = document.querySelectorAll('.colorBox');
+    for (let i =0; i<colorBox.length; i++) {
+      colorBox[i].addEventListener("click", () => {
+        document.querySelector('.ladder-parent')[i+10].scrollIntoView();
+      });
+    }
   }
+
+  
 
 /*Color Extractor Script*/
 
