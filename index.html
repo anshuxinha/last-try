@@ -94,7 +94,10 @@
 
 /*Automatically feed HSL to input*/
 document.getElementById('file').addEventListener ('change', autofeed);
+
 function autofeed() {
+setTimeout(waitFunction, 2000);
+function waitFunction () {
 if (document.querySelector('.hexValue'))
 var hexValues = document.querySelectorAll('.hexValue');
     for (let i=0; i < hexValues.length; i++)
@@ -104,6 +107,7 @@ var hexValues = document.querySelectorAll('.hexValue');
       hueInput[i].value = thehue;
       console.log("Auto function! thehue = " + thehue); 
     }
+  }
   }
 
 /*Color Extractor Script*/
