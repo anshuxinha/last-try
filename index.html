@@ -181,20 +181,6 @@
       let colorArray = [];
       let isWarmColor;
 
-      /*Generate input boxes with colorN*/
-      var inputBoxParent = document.querySelector(".hue-picker");
-      var el = "";
-
-      colorN.addEventListener("keypress", generateInputBox(this.value));
-      function generateInputBox(theNumber) {
-        console.log(colorN.value + "hello");
-        for (let i = 0; i < theNumber; i++) {
-          el = document.createElement("input");
-          el.classList.add("hue");
-          inputBoxParent.appendChild(el);
-        }
-      }
-
       //I put all the function here, just to keep it organized
       const usefulFunctions = {
         //Function rensible for copying the Hex value of determined color
@@ -389,6 +375,20 @@
         usefulFunctions.testColorNumber();
         usefulFunctions.setBackgroundGradient();
       };
+
+      /*Generate input boxes with colorN*/
+      var inputBoxParent = document.querySelector(".hue-picker");
+      var el = "";
+
+      colorN.addEventListener("change", generateInputBox(this.value));
+      function generateInputBox(theNumber) {
+        console.log(colorN.value + "hello");
+        for (let i = 0; i < theNumber; i++) {
+          el = document.createElement("input");
+          el.classList.add("hue");
+          inputBoxParent.appendChild(el);
+        }
+      }
     </script>
 
     <style>
