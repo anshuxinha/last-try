@@ -476,8 +476,8 @@ function makeRainbow(colors) {
 }
 
 var hueChange = document.querySelectorAll(".hue");
-for (let i = 0; i < hueChange.length; i++) {
-  hueChange[i].addEventListener("change", newPage);
+for (let v = 0; v < hueChange.length; v++) {
+  hueChange[v].addEventListener("change", newPage);
 }
 fetchRainbow().then(makeRainbow);
 </script>
