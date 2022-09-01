@@ -372,8 +372,8 @@
         /*Generate New*/
         var inputBoxParent = document.querySelector(".hue-picker");
         var el = "";
-        for (let i = 0; i < colorN.value; i++) {
-          el = document.createElement("input");
+        for (let i = 0; i < Number(colorN.value); i++) {
+          el = document.createElement("img");
           el.classList.add("hue");
           inputBoxParent.appendChild(el);
         }
