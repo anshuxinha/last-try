@@ -4,7 +4,7 @@
 	
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Tint and Shade Generator</title>
+	<title>Anshuman's Munsell Generator</title>
 	<meta name="title" content="Tint and Shade Generator">
 	<link rel="apple-touch-icon" sizes="180x180" href="./apple-touch-icon.png">
 	<link rel="icon" type="image/png" sizes="32x32" href="./favicon-32x32.png">
@@ -106,7 +106,6 @@ const usefulFunctions = {
 
   //This is the best part, this function creates the cells that'll show the color and it's respective values, it'll append them in the palette div
   createCells(item) {
-	
     const newCell = document.createElement("div");
     newCell.classList.add("colorBox");
     newCell.setAttribute("id", "colorBox" + colorIndex);
@@ -151,12 +150,6 @@ const usefulFunctions = {
     colorContainer.appendChild(descContainer);
     palette.appendChild(colorContainer);
     colorIndex++;
-	var hexValues = document.querySelectorAll(".hexValue");
-	// Feed hex values and scroll to section
-	for (let i = 0; i < hexValues.length; i++) {
-		document.getElementById ("color-values").value += hexValues[i].textContent + " "
-	}
-
   },
 
   //the getPalette() from Color Thief
@@ -227,7 +220,7 @@ const usefulFunctions = {
     img.src = "https://source.unsplash.com/random"
   },
   
-  //This guy will test the color temperature, the values were decided based on a very cool discussion in stack overflow
+  //This guy will test the color temperature, the values were decided based on a very coll discussion in stack overflow
   testColorTemperature(r, g, b){
     if ((r >= 128 && r <= 255) && (g => 0 && g <= 128) && (b => 0 && b <= r)){
       console.log('warm: '+r+','+g+','+b)
@@ -251,7 +244,6 @@ file.onchange = (e) => {
   img.src = URL.createObjectURL(file.files[0]);
   usefulFunctions.testColorNumber();
   usefulFunctions.setBackgroundGradient();
- 
 };
   </script>
 
