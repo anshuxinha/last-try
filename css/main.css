@@ -9,7 +9,10 @@ html {
 	font-size: 1.3rem;
     text-align: center;
     color: #f2f2f2;
-	margin-bottom:20px;
+}
+#page span {
+	margin-bottom:50px;
+	margin-top: -25px;
 }
   .hue {
 	cursor: pointer;
