@@ -367,8 +367,6 @@
       link.addEventListener("change", usefulFunctions.setImage);
 
       colorN.addEventListener("change", () => {
-        usefulFunctions.testColorNumber(colorN.value);
-
         /*Generate New*/
         var inputBoxParent = document.querySelector(".hue-picker");
         var el = "";
@@ -377,6 +375,7 @@
           el.classList.add("hue");
           inputBoxParent.appendChild(el);
         }
+        usefulFunctions.testColorNumber(colorN.value);
       });
 
       file.onchange = (e) => {
