@@ -148,19 +148,19 @@
 
                 function wrapAllLadder() {
                   // create the container div
-      var dv = document.createElement('section');
+      var dv = document.createElement('div');
       // get all divs
       var divs = document.getElementsByTagName('div');
       // get the body element
       var body = document.getElementsByTagName('body')[0];
 
       // apply class to container div
-      dv.setAttribute('id', 'container');
+      dv.setAttribute('class', 'container');
 
       // find out all those divs having class C
       for(var i = 0; i < divs.length; i++)
       {
-         if (divs[i].getAttribute('class') === 'ladder')
+         if (divs[i].getAttribute('class') == 'ladder')
          {
             // put the divs having class C inside container div
             dv.appendChild(divs[i]);
