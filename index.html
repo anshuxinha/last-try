@@ -157,11 +157,11 @@
             var body = document.getElementsByTagName("body")[0];
 
             // apply class to container div
-            dv.setAttribute("class", "container");
+            dv.setAttribute("id", "ladder-container");
 
             // find out all those divs having class C
             for (var i = 0; i < divs.length; i++) {
-              if (divs[i].getAttribute("class") === "C") {
+              if (divs[i].getAttribute("class") === "ladder") {
                 // put the divs having class C inside container div
                 dv.appendChild(divs[i]);
               }
