@@ -113,8 +113,10 @@
       /*Automatically feed Munsell to input*/
       document.getElementById("file").addEventListener("change", autofeed);
       var flag = 0;
+
       function autofeed() {
         setTimeout(waitforMunsell, 1500);
+
         function waitforMunsell() {
           if (document.querySelector(".hexValue"))
             var hexValues = document.querySelectorAll(".hexValue");
