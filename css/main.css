@@ -10,10 +10,6 @@ html {
     text-align: center;
     color: #f2f2f2;
 }
-#page span {
-	margin-bottom:50px;
-	margin-top: -25px;
-}
   .hue {
 	cursor: pointer;
   }
