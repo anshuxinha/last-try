@@ -366,9 +366,10 @@
       //this guys are event listeners that i didn't know where to put :)
       link.addEventListener("change", usefulFunctions.setImage);
 
-      colorN.addEventListener("change", () => {
+      colorN.addEventListener("keypress", () => {
         /*Generate New Input Boxes*/
         var inputBoxParent = document.querySelector(".hue-picker");
+        inputBoxParent = "";
         var el = "";
         for (
           let i = 0;
