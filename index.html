@@ -34,6 +34,11 @@
 
   <body id="body">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/color-thief/2.3.0/color-thief.umd.js"></script>
+    <script
+      src="https://code.jquery.com/jquery-3.6.1.min.js"
+      integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ="
+      crossorigin="anonymous"
+    ></script>
 
     <!-- Color Pallete Extraction -->
     <div class="main">
@@ -123,7 +128,7 @@
             console.log("Auto function! thehue = " + thehue);
             flag = i;
             page(thehue);
-            if (i === 4) {
+            if (i == hexValues.length - 1) {
               waitForScroll();
             }
           }
@@ -138,15 +143,6 @@
                   [j * 9 + 1].scrollIntoView();
               });
             }
-            // element that will be wrapped
-            var el = document.querySelector(".ladder");
-            // create wrapper container
-            var ladderContainer = document.createElement("section");
-            ladderContainer.classList.add("ladder-container");
-            // insert wrapper before el in the DOM tree
-            el.parentNode.insertBefore(ladderContainer, el);
-            // move el into wrapper
-            ladderContainer.appendChild(el);
           }
         }
       }
@@ -591,5 +587,10 @@
 
       fetchRainbow().then(makeRainbow);
     </script>
+
+    <!-- Jquery -->
+    $( ".ladder" ).wrapAll( "
+    <section id="ladder-container" />
+    ");
   </body>
 </html>
