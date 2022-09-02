@@ -123,6 +123,7 @@
             console.log("Auto function! thehue = " + thehue);
             flag = i;
             page(thehue);
+            document.getElementById("page").innerHTML += "</div>";
             if (i === 4) {
               waitForScroll();
             }
@@ -549,7 +550,6 @@
           colors.reverse();
           colors.forEach((ladder) => page.appendChild(makeLadder(ladder)));
         });
-        page.innerHTML += "</div>";
       }
 
       function newPage(e) {
