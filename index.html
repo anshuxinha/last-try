@@ -138,8 +138,15 @@
                   [j * 9 + 1].scrollIntoView();
               });
             }
-            document.querySelector(".ladder:last-of-type").textContent +=
-              "</section>";
+            // element that will be wrapped
+            var el = document.querySelectorAll(".ladder");
+            // create wrapper container
+            var ladderContainer = document.createElement("section");
+            ladderContainer.classList.add("ladder-container");
+            // insert wrapper before el in the DOM tree
+            el.parentNode.insertBefore(wrapper, el);
+            // move el into wrapper
+            wrapper.appendChild(el);
           }
         }
       }
@@ -542,8 +549,8 @@
       function page(hue) {
         var page = document.getElementById("page");
         page.innerHTML = "<span>Good things come to those who wait...</span>";
-        page.textContent +=
-          "<sidebar><div id='best-chip'></div><div id='current-chip'></div></sidebar><section id='ladder-container'>.";
+        page.innerHTML +=
+          "<sidebar><div id='best-chip'></div><div id='current-chip'></div></sidebar>";
         fetchPage(hue).then((colors) => {
           console.log("Page function");
           page.innerHTML += "";
