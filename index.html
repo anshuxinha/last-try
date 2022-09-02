@@ -130,11 +130,11 @@
             console.log("Auto function! thehue = " + thehue);
             flag = i;
             page(thehue);
-            if (i == hexValues.length - 1) {
+            if (i == hexValues.length) {
               waitForScroll();
-              addLadderContainer();
             }
           }
+          addLadderContainer();
 
           /*Scroll to Munsell*/
           function waitForScroll() {
