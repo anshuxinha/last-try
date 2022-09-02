@@ -123,7 +123,8 @@
             console.log("Auto function! thehue = " + thehue);
             flag = i;
             page(thehue);
-            document.getElementById("page").innerHTML += "</div>";
+            document.querySelector(".ladder:last-of-type").innerHTML +=
+              "</div>";
             if (i === 4) {
               waitForScroll();
             }
