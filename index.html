@@ -123,8 +123,6 @@
             console.log("Auto function! thehue = " + thehue);
             flag = i;
             page(thehue);
-            document.querySelector(".ladder:last-of-type").innerHTML +=
-              "</div>";
             if (i === 4) {
               waitForScroll();
             }
@@ -138,9 +136,10 @@
                 document
                   .querySelectorAll(".ladder")
                   [j * 9 + 1].scrollIntoView();
-                console.log(j * 9 + 1);
               });
             }
+            document.querySelector(".ladder:last-of-type").innerHTML +=
+              "</div>";
           }
         }
       }
@@ -544,7 +543,7 @@
         var page = document.getElementById("page");
         page.innerHTML = "<span>Good things come to those who wait...</span>";
         page.innerHTML +=
-          "<sidebar><div id='best-chip'></div><div id='current-chip'></div></sidebar><div id='ladder-container'>";
+          "<sidebar><div id='best-chip'></div><div id='current-chip'></div></sidebar><div id='ladder-container'>.";
         fetchPage(hue).then((colors) => {
           console.log("Page function");
           page.innerHTML += "";
