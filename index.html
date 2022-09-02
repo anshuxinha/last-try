@@ -152,7 +152,7 @@
             // create the container div
             var dv = document.createElement("div");
             // get all divs
-            var divs = document.getElementsByTagName("div");
+            var divs = document.querySelectorAll("ladder");
             // get the body element
             var thePage = document.getElementById("page");
 
@@ -161,13 +161,10 @@
 
             // find out all those divs having class C
             for (var i = 0; i < divs.length; i++) {
-              if (divs[i].getAttribute("class") === "ladder") {
-                // put the divs having class C inside container div
-                dv.appendChild(divs[i]);
-              }
+              dv.appendChild(divs[i]);
             }
 
-            // finally append the container div to body
+            // finally append the container div to page
             thePage.appendChild(dv);
           }
         }
