@@ -21,6 +21,9 @@ sidebar {
 #ladder-container {
 	float:right;
 }
+.ladder {
+	float:right;
+}
 #best-chip, #current-chip {
 	width: 50px;
 	border: 1px solid #f2f2f2;
