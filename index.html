@@ -153,6 +153,7 @@
             for (const mutation of mutationList) {
               if (mutation.type === "childList") {
                 addLadderContainer();
+                console.log("Child node added or deleted");
               } else if (mutation.type === "attributes") {
                 console.log(
                   "The ${mutation.attributeName} attribute was modified."
