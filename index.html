@@ -367,7 +367,7 @@
       link.addEventListener("change", usefulFunctions.setImage);
 
       colorN.addEventListener("change", () => {
-        /*Generate New*/
+        /*Generate New Input Boxes*/
         var inputBoxParent = document.querySelector(".hue-picker");
         var el = "";
         for (
@@ -379,6 +379,7 @@
           el.classList.add("hue");
           inputBoxParent.appendChild(el);
         }
+        autofeed();
         usefulFunctions.testColorNumber(colorN.value);
       });
 
