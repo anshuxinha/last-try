@@ -67,357 +67,334 @@
     <div class="copyMessage">Text copied</div>
 
     <script>
-            /*Hex to HSL*/
-            function hexToHSL(H) {
-              // Convert hex to RGB first
-              let r = 0,
-                g = 0,
-                b = 0;
-              if (H.length == 4) {
-                r = "0x" + H[1] + H[1];
-                g = "0x" + H[2] + H[2];
-                b = "0x" + H[3] + H[3];
-              } else if (H.length == 7) {
-                r = "0x" + H[1] + H[2];
-                g = "0x" + H[3] + H[4];
-                b = "0x" + H[5] + H[6];
-              }
-              // Then to HSL
-              r /= 255;
-              g /= 255;
-              b /= 255;
-              let cmin = Math.min(r, g, b),
-                cmax = Math.max(r, g, b),
-                delta = cmax - cmin,
-                h = 0,
-                s = 0,
-                l = 0;
+      /*Hex to HSL*/
+      function hexToHSL(H) {
+        // Convert hex to RGB first
+        let r = 0,
+          g = 0,
+          b = 0;
+        if (H.length == 4) {
+          r = "0x" + H[1] + H[1];
+          g = "0x" + H[2] + H[2];
+          b = "0x" + H[3] + H[3];
+        } else if (H.length == 7) {
+          r = "0x" + H[1] + H[2];
+          g = "0x" + H[3] + H[4];
+          b = "0x" + H[5] + H[6];
+        }
+        // Then to HSL
+        r /= 255;
+        g /= 255;
+        b /= 255;
+        let cmin = Math.min(r, g, b),
+          cmax = Math.max(r, g, b),
+          delta = cmax - cmin,
+          h = 0,
+          s = 0,
+          l = 0;
 
-              if (delta == 0) h = 0;
-              else if (cmax == r) h = ((g - b) / delta) % 6;
-              else if (cmax == g) h = (b - r) / delta + 2;
-              else h = (r - g) / delta + 4;
+        if (delta == 0) h = 0;
+        else if (cmax == r) h = ((g - b) / delta) % 6;
+        else if (cmax == g) h = (b - r) / delta + 2;
+        else h = (r - g) / delta + 4;
 
-              h = Math.round(h * 60);
+        h = Math.round(h * 60);
 
-              if (h < 0) h += 360;
+        if (h < 0) h += 360;
 
-              l = (cmax + cmin) / 2;
-              s = delta == 0 ? 0 : delta / (1 - Math.abs(2 * l - 1));
-              s = +(s * 100).toFixed(1);
-              l = +(l * 100).toFixed(1);
+        l = (cmax + cmin) / 2;
+        s = delta == 0 ? 0 : delta / (1 - Math.abs(2 * l - 1));
+        s = +(s * 100).toFixed(1);
+        l = +(l * 100).toFixed(1);
 
-              return h;
-            }
-
-            /*Automatically feed Munsell to input*/
-            document.getElementById("file").addEventListener("change", autofeed);
-            var flag = 0;
-            function autofeed() {
-              setTimeout(waitforMunsell, 1500);
-              function waitforMunsell() {
-                if (document.querySelector(".hexValue"))
-                  var hexValues = document.querySelectorAll(".hexValue");
-                for (let i = 0; i < hexValues.length; i++) {
-                  var thehue =
-                    Math.round(
-                      (parseInt(hexToHSL(hexValues[i].textContent)) * 100) / 360 / 0.5
-                    ) * 0.5;
-                  var hueInput = document.querySelectorAll("input.hue");
-                  hueInput[i].value = thehue;
-                  console.log("Auto function! thehue = " + thehue);
-                  flag = i;
-                  page(thehue);
-                  if (i == hexValues.length - 1) {
-                    waitForScroll();
-                    wrapAllLadder();
-                  }
-                }
-
-                /*Scroll to Munsell*/
-                function waitForScroll() {
-                  var colorBox = document.querySelectorAll(".colorBox");
-                  for (let j = 0; j < colorBox.length; j++) {
-                    colorBox[j].addEventListener("click", () => {
-                      document
-                        .querySelectorAll(".ladder")
-                        [j * 9 + 1].scrollIntoView();
-                    });
-                  }
-                }
-
-                function wrapAllLadder() {
-                  // create the container div
-      var dv = document.createElement('div');
-      // get all divs
-      var divs = document.getElementsByTagName('div');
-      // get the body element
-      var body = document.getElementsByTagName('body');
-
-      // apply class to container div
-      dv.setAttribute('class', 'container');
-
-      // find out all those divs having class C
-      for(var i = 0; i < divs.length; i++)
-      {
-         if (divs[i].getAttribute('class') == 'ladder')
-         {
-            // put the divs having class C inside container div
-            dv.appendChild(divs[i]);
-         }
+        return h;
       }
 
-      // finally append the container div to body
-      body.appendChild(dv);
-              }
-              }
+      /*Automatically feed Munsell to input*/
+      document.getElementById("file").addEventListener("change", autofeed);
+      var flag = 0;
+      function autofeed() {
+        setTimeout(waitforMunsell, 1500);
+        function waitforMunsell() {
+          if (document.querySelector(".hexValue"))
+            var hexValues = document.querySelectorAll(".hexValue");
+          for (let i = 0; i < hexValues.length; i++) {
+            var thehue =
+              Math.round(
+                (parseInt(hexToHSL(hexValues[i].textContent)) * 100) / 360 / 0.5
+              ) * 0.5;
+            var hueInput = document.querySelectorAll("input.hue");
+            hueInput[i].value = thehue;
+            console.log("Auto function! thehue = " + thehue);
+            flag = i;
+            page(thehue);
+            if (i == hexValues.length - 1) {
+              waitForScroll();
 
-            // /*Hex to Munsell and feed to Input box 1*/
-            // function useRegex(input) {
-            //   if (input.length === 7) {
-            //     let regex = /#(?:[a-f\d]{3}){1,2}\b/i;
-            //     if (regex.test(input)) {
-            //       var directHex = hexToHSL(input);
-            //       var theHexHue =
-            //         Math.round((parseInt(directHex) * 100) / 360 / 0.5) * 0.5;
-            //       var hueHexInput = document.querySelector("input.hue");
-            //       hueHexInput.value = theHexHue;
-            //       console.log("Auto function! thehue = " + theHexHue);
-            //       page(theHexHue);
-            //     }
-            //   }
-            // }
+            }
+          }
 
-            /*Color Extractor Script*/
+          /*Scroll to Munsell*/
+          function waitForScroll() {
+            var colorBox = document.querySelectorAll(".colorBox");
+            for (let j = 0; j < colorBox.length; j++) {
+              colorBox[j].addEventListener("click", () => {
+                document
+                  .querySelectorAll(".ladder")
+                  [j * 9 + 1].scrollIntoView();
+              });
+            }
+          }
 
-            //DOM declarations to make the coding down there esier
-            const colorThief = new ColorThief();
-            const img = document.querySelector("img");
-            const setter = document.querySelector(".setter");
-            const link = document.querySelector(".inputUrl");
-            const main = document.querySelector(".main");
-            const palette = document.querySelector(".palette");
-            const label = document.querySelector(".label");
-            const file = document.querySelector(".inputFile");
-            const colorN = document.querySelector(".colorsNumber");
-            const overlay = document.querySelector(".overlay");
-            const modal = document.querySelector(".modal");
-            const modalTitle = document.querySelector(".modalTitle");
-            const modalText = document.querySelector(".modalText");
-            const modalButton = document.querySelector(".modalButton");
-            const copyMessage = document.querySelector(".copyMessage");
-            let colorIndex = 0;
-            let colorArray = [];
-            let isWarmColor;
 
-            //I put all the function here, just to keep it organized
-            const usefulFunctions = {
-              //Function rensible for copying the Hex value of determined color
-              copyHexColor(id) {
-                let numbers = id.replace(/[^0-9]/g, "");
-                let copyText = document.getElementById(
-                  "hexValue" + numbers
-                ).innerHTML;
-                navigator.clipboard.writeText(copyText);
-                usefulFunctions.showCopyMessage();
-              },
+      }
 
-              //Function rensible for copying the RGB value of determined color
-              copyRgbColor(id) {
-                let numbers = id.replace(/[^0-9]/g, "");
-                let copyText = document.getElementById(
-                  "colorDesc" + numbers
-                ).innerHTML;
-                navigator.clipboard.writeText(copyText);
-                usefulFunctions.showCopyMessage();
-              },
+      // /*Hex to Munsell and feed to Input box 1*/
+      // function useRegex(input) {
+      //   if (input.length === 7) {
+      //     let regex = /#(?:[a-f\d]{3}){1,2}\b/i;
+      //     if (regex.test(input)) {
+      //       var directHex = hexToHSL(input);
+      //       var theHexHue =
+      //         Math.round((parseInt(directHex) * 100) / 360 / 0.5) * 0.5;
+      //       var hueHexInput = document.querySelector("input.hue");
+      //       hueHexInput.value = theHexHue;
+      //       console.log("Auto function! thehue = " + theHexHue);
+      //       page(theHexHue);
+      //     }
+      //   }
+      // }
 
-              //Used to convert the RGB to Hex
-              RGBToHex(r, g, b) {
-                r = r.toString(16);
-                g = g.toString(16);
-                b = b.toString(16);
+      /*Color Extractor Script*/
 
-                if (r.length == 1) r = "0" + r;
-                if (g.length == 1) g = "0" + g;
-                if (b.length == 1) b = "0" + b;
+      //DOM declarations to make the coding down there esier
+      const colorThief = new ColorThief();
+      const img = document.querySelector("img");
+      const setter = document.querySelector(".setter");
+      const link = document.querySelector(".inputUrl");
+      const main = document.querySelector(".main");
+      const palette = document.querySelector(".palette");
+      const label = document.querySelector(".label");
+      const file = document.querySelector(".inputFile");
+      const colorN = document.querySelector(".colorsNumber");
+      const overlay = document.querySelector(".overlay");
+      const modal = document.querySelector(".modal");
+      const modalTitle = document.querySelector(".modalTitle");
+      const modalText = document.querySelector(".modalText");
+      const modalButton = document.querySelector(".modalButton");
+      const copyMessage = document.querySelector(".copyMessage");
+      let colorIndex = 0;
+      let colorArray = [];
+      let isWarmColor;
 
-                return "#" + r + g + b;
-              },
+      //I put all the function here, just to keep it organized
+      const usefulFunctions = {
+        //Function rensible for copying the Hex value of determined color
+        copyHexColor(id) {
+          let numbers = id.replace(/[^0-9]/g, "");
+          let copyText = document.getElementById(
+            "hexValue" + numbers
+          ).innerHTML;
+          navigator.clipboard.writeText(copyText);
+          usefulFunctions.showCopyMessage();
+        },
 
-              //Just to set the link from input to the image source
-              setImage() {
-                img.src = link.value;
-                link.value = "";
-                palette.innerHTML = "";
-              },
+        //Function rensible for copying the RGB value of determined color
+        copyRgbColor(id) {
+          let numbers = id.replace(/[^0-9]/g, "");
+          let copyText = document.getElementById(
+            "colorDesc" + numbers
+          ).innerHTML;
+          navigator.clipboard.writeText(copyText);
+          usefulFunctions.showCopyMessage();
+        },
 
-              //This is the best part, this function creates the cells that'll show the color and it's respective values, it'll append them in the palette div
-              createCells(item) {
-                const newCell = document.createElement("div");
-                newCell.classList.add("colorBox");
-                newCell.setAttribute("id", "colorBox" + colorIndex);
-                newCell.setAttribute("style", "background-color: rgb(" + item + ")");
-                const colorDesc = document.createElement("p");
-                colorDesc.classList.add("colorDesc");
-                const colorDescText = document.createTextNode("rgb(" + item + ")");
-                colorDesc.appendChild(colorDescText);
-                colorDesc.setAttribute("id", "colorDesc" + colorIndex);
-                colorDesc.onclick = function () {
-                  usefulFunctions.copyRgbColor(this.id);
-                };
-                colorDesc.onselectstart = () => {
-                  return false;
-                };
-                const hexValue = document.createElement("small");
-                const hexValueText = document.createTextNode(
-                  usefulFunctions.RGBToHex(item[0], item[1], item[2])
-                );
-                hexValue.onselectstart = () => {
-                  return false;
-                };
-                hexValue.appendChild(hexValueText);
-                hexValue.classList.add("hexValue");
-                hexValue.setAttribute("id", "hexValue" + colorIndex);
-                hexValue.onclick = function () {
-                  usefulFunctions.copyHexColor(this.id);
-                };
-                const descContainer = document.createElement("div");
-                descContainer.classList.add("descContainer");
-                descContainer.setAttribute("id", "descContainer" + colorIndex);
-                usefulFunctions.testColorTemperature(item[0], item[1], item[2]);
-                const colorTemperature = document.createElement("small");
-                colorTemperature.innerHTML = isWarmColor;
-                const colorContainer = document.createElement("div");
-                descContainer.appendChild(colorDesc);
-                descContainer.appendChild(hexValue);
-                descContainer.appendChild(colorTemperature);
-                colorContainer.classList.add("colorContainer");
-                colorContainer.setAttribute("id", "colorContainer" + colorIndex);
-                colorContainer.appendChild(newCell);
-                colorContainer.appendChild(descContainer);
-                palette.appendChild(colorContainer);
-                colorIndex++;
-              },
+        //Used to convert the RGB to Hex
+        RGBToHex(r, g, b) {
+          r = r.toString(16);
+          g = g.toString(16);
+          b = b.toString(16);
 
-              //the getPalette() from Color Thief
-              getColors() {
-                colorIndex = 0;
-                palette.innerHTML = "";
-                img.crossOrigin = "Anonymous";
-                colorArray = colorThief.getPalette(img, Number(colorN.value), 10);
-                colorArray.forEach(usefulFunctions.createCells);
-                usefulFunctions.setBackgroundGradient();
-              },
+          if (r.length == 1) r = "0" + r;
+          if (g.length == 1) g = "0" + g;
+          if (b.length == 1) b = "0" + b;
 
-              //the getColor() from Color Thief
-              getMainColor() {
-                colorIndex = 0;
-                palette.innerHTML = "";
-                let mainColor = colorThief.getColor(img, 10);
-                usefulFunctions.createCells(mainColor);
-                usefulFunctions.setBackgroundGradient();
-              },
+          return "#" + r + g + b;
+        },
 
-              //This one tests the number in the input number field and recall the two above functions depending on the value, also works to limit the 20+ or 0 values
-              testColorNumber(colorNumber) {
-                if (colorNumber < 1) {
-                  colorN.value = "1";
-                  usefulFunctions.showModal();
-                  usefulFunctions.getMainColor();
-                } else if (colorNumber > 20) {
-                  usefulFunctions.showModal();
-                  colorN.value = "20";
-                  usefulFunctions.getColors();
-                } else if (colorNumber == 1) {
-                  usefulFunctions.getMainColor();
-                } else if (colorNumber >= 2 && colorNumber <= 20) {
-                  usefulFunctions.getColors();
-                }
-              },
+        //Just to set the link from input to the image source
+        setImage() {
+          img.src = link.value;
+          link.value = "";
+          palette.innerHTML = "";
+        },
 
-              //show the modal error if you set the color number above 20 or below 1
-              showModal() {
-                overlay.classList.add("active");
-                modal.classList.add("active");
-              },
+        //This is the best part, this function creates the cells that'll show the color and it's respective values, it'll append them in the palette div
+        createCells(item) {
+          const newCell = document.createElement("div");
+          newCell.classList.add("colorBox");
+          newCell.setAttribute("id", "colorBox" + colorIndex);
+          newCell.setAttribute("style", "background-color: rgb(" + item + ")");
+          const colorDesc = document.createElement("p");
+          colorDesc.classList.add("colorDesc");
+          const colorDescText = document.createTextNode("rgb(" + item + ")");
+          colorDesc.appendChild(colorDescText);
+          colorDesc.setAttribute("id", "colorDesc" + colorIndex);
+          colorDesc.onclick = function () {
+            usefulFunctions.copyRgbColor(this.id);
+          };
+          colorDesc.onselectstart = () => {
+            return false;
+          };
+          const hexValue = document.createElement("small");
+          const hexValueText = document.createTextNode(
+            usefulFunctions.RGBToHex(item[0], item[1], item[2])
+          );
+          hexValue.onselectstart = () => {
+            return false;
+          };
+          hexValue.appendChild(hexValueText);
+          hexValue.classList.add("hexValue");
+          hexValue.setAttribute("id", "hexValue" + colorIndex);
+          hexValue.onclick = function () {
+            usefulFunctions.copyHexColor(this.id);
+          };
+          const descContainer = document.createElement("div");
+          descContainer.classList.add("descContainer");
+          descContainer.setAttribute("id", "descContainer" + colorIndex);
+          usefulFunctions.testColorTemperature(item[0], item[1], item[2]);
+          const colorTemperature = document.createElement("small");
+          colorTemperature.innerHTML = isWarmColor;
+          const colorContainer = document.createElement("div");
+          descContainer.appendChild(colorDesc);
+          descContainer.appendChild(hexValue);
+          descContainer.appendChild(colorTemperature);
+          colorContainer.classList.add("colorContainer");
+          colorContainer.setAttribute("id", "colorContainer" + colorIndex);
+          colorContainer.appendChild(newCell);
+          colorContainer.appendChild(descContainer);
+          palette.appendChild(colorContainer);
+          colorIndex++;
+        },
 
-              //hide the modal error
-              hideModal() {
-                overlay.classList.remove("active");
-                modal.classList.remove("active");
-              },
+        //the getPalette() from Color Thief
+        getColors() {
+          colorIndex = 0;
+          palette.innerHTML = "";
+          img.crossOrigin = "Anonymous";
+          colorArray = colorThief.getPalette(img, Number(colorN.value), 10);
+          colorArray.forEach(usefulFunctions.createCells);
+          usefulFunctions.setBackgroundGradient();
+        },
 
-              //this one will show a "Text Copied" on top of the page whenever you click a RGB or Hex value, will also (obviously) copy the clicked value to transfer area
-              showCopyMessage() {
-                copyMessage.classList.add("active");
-                setTimeout(() => {
-                  copyMessage.classList.remove("active");
-                }, 3000);
-              },
+        //the getColor() from Color Thief
+        getMainColor() {
+          colorIndex = 0;
+          palette.innerHTML = "";
+          let mainColor = colorThief.getColor(img, 10);
+          usefulFunctions.createCells(mainColor);
+          usefulFunctions.setBackgroundGradient();
+        },
 
-              //this guy will find the main color (getColor()) of the image and set it as a gradient background, it creates a really coll effect in my opinion
-              setBackgroundGradient() {
-                let backColor = colorThief.getColor(img, 10);
-                main.style.backgroundImage =
-                  "linear-gradient(rgba(" + backColor + ",0.7), #121212)";
-              },
+        //This one tests the number in the input number field and recall the two above functions depending on the value, also works to limit the 20+ or 0 values
+        testColorNumber(colorNumber) {
+          if (colorNumber < 1) {
+            colorN.value = "1";
+            usefulFunctions.showModal();
+            usefulFunctions.getMainColor();
+          } else if (colorNumber > 20) {
+            usefulFunctions.showModal();
+            colorN.value = "20";
+            usefulFunctions.getColors();
+          } else if (colorNumber == 1) {
+            usefulFunctions.getMainColor();
+          } else if (colorNumber >= 2 && colorNumber <= 20) {
+            usefulFunctions.getColors();
+          }
+        },
 
-              //i made this one just to feed the image with random links from unsplash while i was creating it
-              unsplashSetter() {
-                img.src = "";
-                img.src = "https://source.unsplash.com/random";
-              },
+        //show the modal error if you set the color number above 20 or below 1
+        showModal() {
+          overlay.classList.add("active");
+          modal.classList.add("active");
+        },
 
-              //This guy will test the color temperature, the values were decided based on a very coll discussion in stack overflow
-              testColorTemperature(r, g, b) {
-                if (
-                  r >= 128 &&
-                  r <= 255 &&
-                  ((g) => 0 && g <= 128) &&
-                  ((b) => 0 && b <= r)
-                ) {
-                  console.log("warm: " + r + "," + g + "," + b);
-                  isWarmColor = "- Warm";
-                } else if (
-                  r >= 0 &&
-                  r <= b &&
-                  ((g) => 0 && g <= 128) &&
-                  ((b) => 128 && b <= 255)
-                ) {
-                  console.log("cool: " + r + "," + g + "," + b);
-                  isWarmColor = "- Cool";
-                }
-                return isWarmColor;
-              },
-            };
+        //hide the modal error
+        hideModal() {
+          overlay.classList.remove("active");
+          modal.classList.remove("active");
+        },
 
-            //this guys are event listeners that i didn't know where to put :)
-            link.addEventListener("change", usefulFunctions.setImage);
+        //this one will show a "Text Copied" on top of the page whenever you click a RGB or Hex value, will also (obviously) copy the clicked value to transfer area
+        showCopyMessage() {
+          copyMessage.classList.add("active");
+          setTimeout(() => {
+            copyMessage.classList.remove("active");
+          }, 3000);
+        },
 
-            colorN.addEventListener("change", () => {
-              /*Generate New Input Boxes*/
-              var inputBoxParent = document.querySelector(".hue-picker");
-              var el = "";
-              inputBoxParent.innerHTML = " ";
-              for (
-                let i = 0;
-                i < Number(document.querySelector(".colorsNumber").value);
-                i++
-              ) {
-                el = document.createElement("input");
-                el.classList.add("hue");
-                inputBoxParent.appendChild(el);
-              }
-              autofeed();
-              usefulFunctions.testColorNumber(colorN.value);
-            });
+        //this guy will find the main color (getColor()) of the image and set it as a gradient background, it creates a really coll effect in my opinion
+        setBackgroundGradient() {
+          let backColor = colorThief.getColor(img, 10);
+          main.style.backgroundImage =
+            "linear-gradient(rgba(" + backColor + ",0.7), #121212)";
+        },
 
-            file.onchange = (e) => {
-              img.src = URL.createObjectURL(file.files[0]);
-              usefulFunctions.testColorNumber();
-              usefulFunctions.setBackgroundGradient();
-            };
+        //i made this one just to feed the image with random links from unsplash while i was creating it
+        unsplashSetter() {
+          img.src = "";
+          img.src = "https://source.unsplash.com/random";
+        },
+
+        //This guy will test the color temperature, the values were decided based on a very coll discussion in stack overflow
+        testColorTemperature(r, g, b) {
+          if (
+            r >= 128 &&
+            r <= 255 &&
+            ((g) => 0 && g <= 128) &&
+            ((b) => 0 && b <= r)
+          ) {
+            console.log("warm: " + r + "," + g + "," + b);
+            isWarmColor = "- Warm";
+          } else if (
+            r >= 0 &&
+            r <= b &&
+            ((g) => 0 && g <= 128) &&
+            ((b) => 128 && b <= 255)
+          ) {
+            console.log("cool: " + r + "," + g + "," + b);
+            isWarmColor = "- Cool";
+          }
+          return isWarmColor;
+        },
+      };
+
+      //this guys are event listeners that i didn't know where to put :)
+      link.addEventListener("change", usefulFunctions.setImage);
+
+      colorN.addEventListener("change", () => {
+        /*Generate New Input Boxes*/
+        var inputBoxParent = document.querySelector(".hue-picker");
+        var el = "";
+        inputBoxParent.innerHTML = " ";
+        for (
+          let i = 0;
+          i < Number(document.querySelector(".colorsNumber").value);
+          i++
+        ) {
+          el = document.createElement("input");
+          el.classList.add("hue");
+          inputBoxParent.appendChild(el);
+        }
+        autofeed();
+        usefulFunctions.testColorNumber(colorN.value);
+      });
+
+      file.onchange = (e) => {
+        img.src = URL.createObjectURL(file.files[0]);
+        usefulFunctions.testColorNumber();
+        usefulFunctions.setBackgroundGradient();
+      };
     </script>
 
     <style>
