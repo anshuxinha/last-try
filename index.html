@@ -132,6 +132,7 @@
             page(thehue);
             if (i == hexValues.length - 1) {
               waitForScroll();
+              addLadderContainer();
             }
           }
 
@@ -145,6 +146,29 @@
                   [j * 9 + 1].scrollIntoView();
               });
             }
+          }
+
+          function addLadderContainer() {
+            // create the container div
+            var dv = document.createElement("div");
+            // get all divs
+            var divs = document.getElementsByTagName("div");
+            // get the body element
+            var body = document.getElementsByTagName("body")[0];
+
+            // apply class to container div
+            dv.setAttribute("class", "container");
+
+            // find out all those divs having class C
+            for (var i = 0; i < divs.length; i++) {
+              if (divs[i].getAttribute("class") === "C") {
+                // put the divs having class C inside container div
+                dv.appendChild(divs[i]);
+              }
+            }
+
+            // finally append the container div to body
+            body.appendChild(dv);
           }
         }
       }
