@@ -154,7 +154,7 @@
             // get all divs
             var divs = document.getElementsByTagName("div");
             // get the body element
-            var body = document.getElementsByTagName("body")[0];
+            var thePage = document.getElementById("page")[0];
 
             // apply class to container div
             dv.setAttribute("id", "ladder-container");
@@ -168,7 +168,7 @@
             }
 
             // finally append the container div to body
-            body.appendChild(dv);
+            thePage.appendChild(dv);
           }
         }
       }
