@@ -130,6 +130,7 @@
             page(thehue);
             if (i == hexValues.length - 1) {
               waitForScroll();
+              wrapAllLadder();
             }
           }
 
@@ -142,6 +143,22 @@
                   .querySelectorAll(".ladder")
                   [j * 9 + 1].scrollIntoView();
               });
+            }
+          }
+
+          function wrapAllLadder() {
+            var addedToDocument = false;
+            var wrapper = document.createElement("section");
+            wrapper.id = "ladder-container";
+            var nodesToWrap = document.getElementsByClassName("ladder");
+            for (var index = 0; index < nodesToWrap.length; index++) {
+              var node = nodesToWrap[index];
+              if (!addedToDocument) {
+                node.parentNode.insertBefore(wrapper, node);
+                addedToDocument = true;
+              }
+              node.parentNode.removeChild(node);
+              wrapper.appendChild(node);
             }
           }
         }
@@ -587,10 +604,5 @@
 
       fetchRainbow().then(makeRainbow);
     </script>
-
-    <!-- Jquery -->
-    $( ".ladder" ).wrapAll( "
-    <section id="ladder-container" />
-    ");
   </body>
 </html>
