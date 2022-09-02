@@ -541,6 +541,7 @@
       function page(hue) {
         var page = document.getElementById("page");
         page.innerHTML = "<span>Good things come to those who wait...</span>";
+        page.innerHTML += "<sidebar><div id="best-chip"></div><div id="current-chip"></div></sidebar>"
         fetchPage(hue).then((colors) => {
           console.log("Page function");
           page.innerHTML += "";
