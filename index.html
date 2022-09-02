@@ -134,7 +134,15 @@
               waitForScroll();
             }
           }
-          addLadderContainer();
+
+          var divs = document.querySelectorAll(".ladder");
+          var thePage = document.getElementById("page");
+          // create the container div
+          var dv = document.createElement("div");
+          // apply class to container div
+          dv.setAttribute("id", "ladder-container");
+
+          thePage.addEventListener("change", addLadderContainer());
 
           /*Scroll to Munsell*/
           function waitForScroll() {
@@ -149,16 +157,6 @@
           }
 
           function addLadderContainer() {
-            // create the container div
-            var dv = document.createElement("div");
-            // get all divs
-            var divs = document.querySelectorAll(".ladder");
-            // get the body element
-            var thePage = document.getElementById("page");
-
-            // apply class to container div
-            dv.setAttribute("id", "ladder-container");
-
             // find out all those divs having class C
             for (var i = 0; i < divs.length; i++) {
               dv.appendChild(divs[i]);
