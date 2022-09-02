@@ -16,6 +16,10 @@ html {
 }
 sidebar {
 	background: #222;
+	float:left;
+}
+#ladder-container {
+	float:right;
 }
 #best-chip, #current-chip {
 	width: 50px;
