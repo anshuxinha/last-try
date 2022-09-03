@@ -2,9 +2,7 @@
 html {
 	scroll-behavior: smooth;
 }
-.ladder:nth-child((n*9)+1) {
-	margin-top:25px;
-}
+
 #page {
 	font-size: 1.3rem;
     text-align: center;
@@ -29,7 +27,7 @@ sidebar {
 	border: 1px solid #f2f2f2;
 	margin-bottom: 100px;
 }
-.best-chip {
+.best-chip p {
 	margin-top:5.8vw;
 }
 
@@ -75,7 +73,7 @@ sidebar {
 	grid-template-columns: repeat(17, 1fr);
 	grid-template-rows: 1fr;
 	grid-gap: 4px;
-	height: 5.8vw;
+	max-height: 5.8vw;
   }
   #picker .ladder {
 	grid-template-columns: repeat(20, 1fr);
