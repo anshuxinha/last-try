@@ -586,7 +586,7 @@
       function page(hue, flag) {
         var page = document.getElementById("page");
         page.innerHTML = "<span>Good things come to those who wait...</span>";
-        if (flag == colorN.value) {
+        if (flag == colorN.value - 1) {
           page.innerHTML = "";
         }
         fetchPage(hue).then((colors) => {
