@@ -27,7 +27,7 @@ sidebar {
 	border: 1px solid #f2f2f2;
 	margin-bottom: 100px;
 }
-.best-chip p {
+.best-chip:not(:first-child) {
 	margin-top:58vw;
 }
 
