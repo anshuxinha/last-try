@@ -130,6 +130,10 @@
             console.log("Auto function! thehue = " + thehue);
             flag = i;
             page(thehue);
+            page.innerHTML += "<sidebar></sidebar>";
+            var sidebar = document.getElementsByTagName("sidebar")[0];
+            sidebar.innerHTML +=
+              "<p>Best Munsell Chip<br></p><div class='best-chip'></div><p>Selected Munsell Chip<br></p><div class='current-chip'></div>";
             if (i == hexValues.length) {
               waitForScroll();
             }
@@ -592,12 +596,8 @@
       function page(hue) {
         var page = document.getElementById("page");
         page.innerHTML = "<span>Good things come to those who wait...</span>";
-        page.innerHTML += "<sidebar></sidebar>";
-        var sidebar = document.getElementsByTagName("sidebar")[0];
         fetchPage(hue).then((colors) => {
           console.log("Page function");
-          sidebar.innerHTML +=
-            "<p>Best Munsell Chip<br></p><div class='best-chip'></div><p>Selected Munsell Chip<br></p><div class='current-chip'></div>";
           colors.reverse();
           colors.forEach((ladder) => page.appendChild(makeLadder(ladder)));
         });
