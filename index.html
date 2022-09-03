@@ -168,6 +168,7 @@
           if (document.querySelector(".hexValue"))
             var hexValues = document.querySelectorAll(".hexValue");
           for (let i = 0; i < hexValues.length; i++) {
+            /*Hex to Munsell formula*/
             var thehue =
               Math.round(
                 (parseInt(hexToHSL(hexValues[i].textContent)) * 100) / 360 / 0.5
@@ -187,51 +188,6 @@
             }
           }
 
-          // /*Create and add new parent Ladder Container*/
-          // var divs = document.querySelectorAll(".ladder");
-          // // create the container div
-          // var dv = document.createElement("div");
-          // // apply class to container div
-          // dv.setAttribute("id", "ladder-container");
-
-          // //Check whether element is added
-          // // Select the node that will be observed for mutations
-          // const targetNode = document.getElementById("page");
-
-          // // Options for the observer (which mutations to observe)
-          // const config = { attributes: true, childList: true, subtree: true };
-
-          // // Callback function to execute when mutations are observed
-          // const callback = (mutationList, observer) => {
-          //   for (const mutation of mutationList) {
-          //     if (mutation.type === "childList") {
-          //       console.log("A child node has been added or removed.");
-          //       divs = document.querySelectorAll(".ladder");
-          //       addLadderContainer();
-          //     } else if (mutation.type === "subtree") {
-          //       console.log(
-          //         "The ${mutation.attributeName} attribute was modified."
-          //       );
-          //     }
-          //   }
-          // };
-
-          // // Create an observer instance linked to the callback function
-          // const observer = new MutationObserver(callback);
-
-          // // Start observing the target node for configured mutations
-          // observer.observe(targetNode, config);
-
-          // function addLadderContainer() {
-          //   // find out all those divs having class C
-          //   for (var i = 0; i < divs.length; i++) {
-          //     dv.appendChild(divs[i]);
-          //   }
-
-          //   // finally append the container div to page
-          //   targetNode.appendChild(dv);
-          // }
-
           /*Scroll to Munsell*/
           function waitForScroll() {
             var colorBox = document.querySelectorAll(".colorBox");
@@ -245,22 +201,6 @@
           }
         }
       }
-
-      // /*Hex to Munsell and feed to Input box 1*/
-      // function useRegex(input) {
-      //   if (input.length === 7) {
-      //     let regex = /#(?:[a-f\d]{3}){1,2}\b/i;
-      //     if (regex.test(input)) {
-      //       var directHex = hexToHSL(input);
-      //       var theHexHue =
-      //         Math.round((parseInt(directHex) * 100) / 360 / 0.5) * 0.5;
-      //       var hueHexInput = document.querySelector("input.hue");
-      //       hueHexInput.value = theHexHue;
-      //       console.log("Auto function! thehue = " + theHexHue);
-      //       page(theHexHue);
-      //     }
-      //   }
-      // }
 
       /*Color Extractor Script*/
 
@@ -356,6 +296,17 @@
           hexValue.onclick = function () {
             usefulFunctions.copyHexColor(this.id);
           };
+          const munsellValue = document.createElement("small");
+          const munsellValueText = document.createTextNode(
+            Math.round(
+              (parseInt(hexToHSL(item.textContent)) * 100) / 360 / 0.5
+            ) * 0.5
+          );
+          munsellValue.onselectstart = () => {
+            return false;
+          };
+          munsellValue.appendChild(munsellValueText);
+
           const descContainer = document.createElement("div");
           descContainer.classList.add("descContainer");
           descContainer.setAttribute("id", "descContainer" + colorIndex);
@@ -365,6 +316,7 @@
           const colorContainer = document.createElement("div");
           descContainer.appendChild(colorDesc);
           descContainer.appendChild(hexValue);
+          descContainer.appendChild(munsellValue);
           descContainer.appendChild(colorTemperature);
           colorContainer.classList.add("colorContainer");
           colorContainer.setAttribute("id", "colorContainer" + colorIndex);
