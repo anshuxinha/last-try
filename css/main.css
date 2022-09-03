@@ -11,18 +11,20 @@ html {
     color: #f2f2f2;
 }
 sidebar {
-	background: #222;
+	background: #555;
 	float:left;
 	display: flex;
 	flex-direction: column;
+	margin-top:50px;
 }
 .ladder {
 	margin-left: 20%;
 }
 #best-chip, #current-chip {
-	width: 50px;
+	width: 100px;
+	height: 50px;
 	border: 1px solid #f2f2f2;
-	padding-bottom: 20px;
+	margin-bottom: 100px;
 }
 
   .hue {
