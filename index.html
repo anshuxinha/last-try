@@ -637,6 +637,15 @@
       }
 
       fetchRainbow().then(makeRainbow);
+
+      /*Update Sidebar*/
+      document.querySelectorAll(".swatch").forEach(updateSideBar);
+      var currentChipColor = document.querySelector(".current-chip-color");
+      function updateSideBar(item, index, arr) {
+        arr[index].addEventListener("click", () => {
+          currentChipColor.style.backgroundColor = this.style.backgroundColor;
+        });
+      }
     </script>
   </body>
 </html>
