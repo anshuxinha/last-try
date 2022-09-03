@@ -129,9 +129,10 @@
             hueInput[i].value = thehue;
             console.log("Auto function! thehue = " + thehue);
             flag = i;
-            page(thehue);
             /*Add sidebar*/
-            // document.getElementById("page").innerHTML += "<sidebar></sidebar>";
+            document.getElementById("page").innerHTML += "<sidebar></sidebar>";
+            page(thehue);
+
             // var sidebar = document.getElementsByTagName("sidebar")[0];
             // for (let i = 0; i < hexValues.length; i++) {
             //   sidebar.innerHTML +=
