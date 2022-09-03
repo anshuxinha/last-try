@@ -177,7 +177,11 @@
             hueInput[i].value = thehue;
             console.log("Auto function! thehue = " + thehue);
             flag = i;
-            page(thehue, flag);
+            page(thehue);
+            /*Add sidebar*/
+            document.getElementById("page").innerHTML += "<sidebar></sidebar>";
+            document.getElementsByTagName("sidebar")[0].innerHTML +=
+              "<div class='current-chip'><small>Selected Munsell Chip<br></small><div class='current-chip-color'></div><small class='rgb-code'>RGB: </small><br><small class='hsv-code'>HSV: </small></div>";
             /*Call scroll function*/
             if (i == hexValues.length - 1) {
               waitForScroll();
@@ -579,7 +583,7 @@
         return ladder;
       }
 
-      function page(hue, flag) {
+      function page(hue) {
         var page = document.getElementById("page");
         page.innerHTML = "<span>Munsell Color System...</span>";
         fetchPage(hue).then((colors) => {
@@ -587,11 +591,6 @@
           colors.reverse();
           colors.forEach((ladder) => {
             page.appendChild(makeLadder(ladder));
-            /*Create sidebar*/
-            /*Add sidebar*/
-            document.getElementById("page").innerHTML += "<sidebar></sidebar>";
-            document.getElementsByTagName("sidebar")[0].innerHTML +=
-              "<div class='current-chip'><small>Selected Munsell Chip<br></small><div class='current-chip-color'></div><small class='rgb-code'>RGB: </small><br><small class='hsv-code'>HSV: </small></div>";
             /*Update Sidebar*/
             document.querySelectorAll(".swatch").forEach(updateSideBar);
             var currentChipColor = document.querySelector(
