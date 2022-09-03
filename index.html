@@ -67,6 +67,15 @@
     <div class="copyMessage">Text copied</div>
 
     <script>
+      /*isInt function*/
+      function isInt(value) {
+        return (
+          !isNaN(value) &&
+          (function (x) {
+            return (x | 0) === x;
+          })(parseFloat(value))
+        );
+      }
       /*Hex to HSL*/
       function hexToHSL(H) {
         // Convert hex to RGB first
@@ -297,9 +306,19 @@
             usefulFunctions.copyHexColor(this.id);
           };
           const munsellValue = document.createElement("small");
-          const munsellValueText = document.createTextNode(
-            document.querySelectorAll(".swatch")[0].textContent
-          );
+          const munsellValueText = document.createTextNode(() => {
+            var allSwatches = document.querySelectorAll(
+              "#page .ladder .swatch"
+            );
+            var cacheSwatchColor;
+
+            for (let i = 0; i < allSwatches.length; i++) {
+              if (isInt(i / 101)) {
+                cacheSwatchColor = allSwatches[i].textContent;
+              }
+              return cacheSwatchColor;
+            }
+          });
           console.log(munsellValueText);
           munsellValue.onselectstart = () => {
             return false;
