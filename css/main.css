@@ -13,12 +13,12 @@ sidebar {
 	float:left;
 	display: flex;
 	flex-direction: column;
-	margin-top:45px;
+	margin-top:40px;
 	justify-content: center;
 	align-items: center;
 	padding: 150px 35px;
 	position: sticky;
-	top:10px;
+	top:5%;
 }
 #page .ladder {
     margin-left: 15%;
