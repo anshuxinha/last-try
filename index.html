@@ -142,34 +142,9 @@
           // apply class to container div
           dv.setAttribute("id", "ladder-container");
 
-          // Select the node that will be observed for mutations
-          const targetNode = document.getElementById("page");
-
-          // Options for the observer (which mutations to observe)
-          const config = { attributes: true, childList: true, subtree: true };
-
-          // Callback function to execute when mutations are observed
-          const callback = (mutationList, observer) => {
-            for (const mutation of mutationList) {
-              if (mutation.type === "childList") {
-                addLadderContainer();
-                console.log("Child node added or deleted");
-              } else if (mutation.type === "attributes") {
-                console.log(
-                  "The ${mutation.attributeName} attribute was modified."
-                );
-              }
-            }
-          };
-
-          // Create an observer instance linked to the callback function
-          const observer = new MutationObserver(callback);
-
-          // Start observing the target node for configured mutations
-          observer.observe(targetNode, config);
-
+          thePage.addEventListener("change", addLadderContainer());
           function addLadderContainer() {
-            // append all child
+            // find out all those divs having class C
             for (var i = 0; i < divs.length; i++) {
               dv.appendChild(divs[i]);
             }
