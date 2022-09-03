@@ -16,8 +16,8 @@ sidebar {
 	margin-top:45px;
 	justify-content: center;
 	align-items: center;
-	padding: 50px 35px;
-	
+	padding: 150px 35px;
+	position: sticky;
 }
 #page .ladder {
     margin-left: 20%;
