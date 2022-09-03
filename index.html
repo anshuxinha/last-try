@@ -156,7 +156,7 @@
                 console.log("A child node has been added or removed.");
                 divs = document.querySelectorAll(".ladder");
                 addLadderContainer();
-              } else if (mutation.type === "attributes") {
+              } else if (mutation.type === "subtree") {
                 console.log(
                   "The ${mutation.attributeName} attribute was modified."
                 );
