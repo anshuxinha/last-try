@@ -132,12 +132,8 @@
             page(thehue);
             /*Add sidebar*/
             document.getElementById("page").innerHTML += "<sidebar></sidebar>";
-
-            // var sidebar = document.getElementsByTagName("sidebar")[0];
-            // for (let i = 0; i < hexValues.length; i++) {
-            //   sidebar.innerHTML +=
-            //     "<div class='best-chip'><p>Best Munsell Chip<br></p><div class='best-chip-color'></div></div><div class='current-chip'><p>Selected Munsell Chip<br></p><div class='best-chip-color'></div></div>";
-            // }
+            document.getElementsByTagName("sidebar")[0].innerHTML +=
+              "<div class='best-chip'><p>Best Munsell Chip<br></p><div class='best-chip-color'></div></div><div class='current-chip'><p>Selected Munsell Chip<br></p><div class='best-chip-color'></div></div>";
             /*Call scroll function*/
             if (i == hexValues.length - 1) {
               waitForScroll();
@@ -606,8 +602,6 @@
           colors.reverse();
           colors.forEach((ladder) => {
             page.appendChild(makeLadder(ladder));
-            document.getElementsByTagName("sidebar")[0].innerHTML +=
-              "<div class='best-chip'><p>Best Munsell Chip<br></p><div class='best-chip-color'></div></div><div class='current-chip'><p>Selected Munsell Chip<br></p><div class='best-chip-color'></div></div>";
           });
         });
       }
