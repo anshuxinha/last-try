@@ -29,6 +29,9 @@ sidebar {
 	border: 1px solid #f2f2f2;
 	margin-bottom: 100px;
 }
+.best-chip {
+	margin-top:5.8vw;
+}
 
   .hue {
 	cursor: pointer;
