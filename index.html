@@ -599,20 +599,20 @@
         page.innerHTML = "<span>Good things come to those who wait...</span>";
         fetchPage(hue).then((colors) => {
           console.log("Page function");
-
-          /*Update Sidebar*/
-          document.querySelectorAll(".swatch").forEach(updateSideBar);
-          var currentChipColor = document.querySelector(".current-chip-color");
-          function updateSideBar(item, index, arr) {
-            arr[index].addEventListener("click", () => {
-              currentChipColor.style.backgroundColor =
-                this.style.backgroundColor;
-            });
-          }
-
           colors.reverse();
           colors.forEach((ladder) => {
             page.appendChild(makeLadder(ladder));
+            /*Update Sidebar*/
+            document.querySelectorAll(".swatch").forEach(updateSideBar);
+            var currentChipColor = document.querySelector(
+              ".current-chip-color"
+            );
+            function updateSideBar(item, index, arr) {
+              arr[index].addEventListener("click", () => {
+                currentChipColor.style.backgroundColor =
+                  this.style.backgroundColor;
+              });
+            }
           });
         });
       }
