@@ -593,7 +593,7 @@
         var page = document.getElementById("page");
         page.innerHTML = "<span>Good things come to those who wait...</span>";
         page.innerHTML += "<sidebar></sidebar>";
-        var sidebar = document.getElementsByTagName("sidebar");
+        var sidebar = document.getElementsByTagName("sidebar")[0];
         fetchPage(hue).then((colors) => {
           console.log("Page function");
           sidebar.innerHTML +=
