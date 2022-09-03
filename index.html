@@ -136,7 +136,7 @@
             // var sidebar = document.getElementsByTagName("sidebar")[0];
             // for (let i = 0; i < hexValues.length; i++) {
             //   sidebar.innerHTML +=
-            //     "<p>Best Munsell Chip<br></p><div class='best-chip'></div><p>Selected Munsell Chip<br></p><div class='current-chip'></div>";
+            //     "<div class='best-chip'><p>Best Munsell Chip<br></p><div class='best-chip-color'></div></div><div class='current-chip'><p>Selected Munsell Chip<br></p><div class='best-chip-color'></div></div>";
             // }
             /*Call scroll function*/
             if (i == hexValues.length - 1) {
@@ -607,7 +607,7 @@
           colors.forEach((ladder) => {
             page.appendChild(makeLadder(ladder));
             document.getElementsByTagName("sidebar")[0].innerHTML +=
-              "<p>Best Munsell Chip<br></p><div class='best-chip'></div><p>Selected Munsell Chip<br></p><div class='current-chip'></div>";
+              "<div class='best-chip'><p>Best Munsell Chip<br></p><div class='best-chip-color'></div></div><div class='current-chip'><p>Selected Munsell Chip<br></p><div class='best-chip-color'></div></div>";
           });
         });
       }
