@@ -16,7 +16,7 @@ sidebar {
 	margin-top:45px;
 	justify-content: center;
 	align-items: center;
-	padding: 20px 35px
+	padding: 20px 35px;
 }
 #page.ladder {
 	margin-left: 20%;
@@ -28,7 +28,7 @@ sidebar {
 	margin-bottom: 100px;
 }
 .best-chip p {
-	margin-top:5.8vw;
+	margin-top:58vw;
 }
 
   .hue {
@@ -73,7 +73,7 @@ sidebar {
 	grid-template-columns: repeat(17, 1fr);
 	grid-template-rows: 1fr;
 	grid-gap: 4px;
-	max-height: 5.8vw;
+	height: 5.8vw;
   }
   #picker .ladder {
 	grid-template-columns: repeat(20, 1fr);
