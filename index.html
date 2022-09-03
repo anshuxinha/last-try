@@ -133,7 +133,7 @@
             /*Add sidebar*/
             document.getElementById("page").innerHTML += "<sidebar></sidebar>";
             document.getElementsByTagName("sidebar")[0].innerHTML +=
-              "<div class='best-chip'><p>Best Munsell Chip<br></p><div class='best-chip-color'></div></div><div class='current-chip'><p>Selected Munsell Chip<br></p><div class='current-chip-color'></div></div>";
+              "<div class='current-chip'><p>Selected Munsell Chip<br></p><div class='current-chip-color'></div><p class='rgb-code'>RGB: </p><p class='hsv-code'>HSV: </p></div>";
             /*Call scroll function*/
             if (i == hexValues.length - 1) {
               waitForScroll();
@@ -607,10 +607,13 @@
             var currentChipColor = document.querySelector(
               ".current-chip-color"
             );
+            var rgbCode = document.querySelector(".rgb-code");
+            var hsvCode = document.querySelector(".hsv-code");
             function updateSideBar(item, index, arr) {
               arr[index].addEventListener("click", () => {
                 currentChipColor.style.backgroundColor =
                   arr[index].style.backgroundColor;
+                rgbCode.textContent += arr[index].style.backgroundColor;
               });
             }
           });
