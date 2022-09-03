@@ -130,10 +130,14 @@
             console.log("Auto function! thehue = " + thehue);
             flag = i;
             page(thehue);
+            /*Add sidebar*/
             document.getElementById("page").innerHTML += "<sidebar></sidebar>";
             var sidebar = document.getElementsByTagName("sidebar")[0];
-            sidebar.innerHTML +=
-              "<p>Best Munsell Chip<br></p><div class='best-chip'></div><p>Selected Munsell Chip<br></p><div class='current-chip'></div>";
+            for (let i = 0; i < hexValues.length; i++) {
+              sidebar.innerHTML +=
+                "<p>Best Munsell Chip<br></p><div class='best-chip'></div><p>Selected Munsell Chip<br></p><div class='current-chip'></div>";
+            }
+            /*Call scroll function*/
             if (i == hexValues.length - 1) {
               waitForScroll();
             }
