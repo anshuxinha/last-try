@@ -32,7 +32,7 @@
     <link rel="stylesheet" href="./css/carbon.css" />
   </head>
 
-  <body id="body">
+  <body id="body" oncontextmenu="return false">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/color-thief/2.3.0/color-thief.umd.js"></script>
     <script
       src="https://code.jquery.com/jquery-3.6.1.min.js"
@@ -67,6 +67,25 @@
     <div class="copyMessage">Text copied</div>
 
     <script>
+      /*Prevent IE*/
+      document.onkeydown = function (e) {
+        if (event.keyCode == 123) {
+          return false;
+        }
+        if (e.ctrlKey && e.shiftKey && e.keyCode == "I".charCodeAt(0)) {
+          return false;
+        }
+        if (e.ctrlKey && e.shiftKey && e.keyCode == "C".charCodeAt(0)) {
+          return false;
+        }
+        if (e.ctrlKey && e.shiftKey && e.keyCode == "J".charCodeAt(0)) {
+          return false;
+        }
+        if (e.ctrlKey && e.keyCode == "U".charCodeAt(0)) {
+          return false;
+        }
+      };
+
       /*Hex to HSL*/
       function hexToHSL(H) {
         // Convert hex to RGB first
