@@ -135,7 +135,7 @@
             }
           }
 
-          //Create and add new parent Ladder Container
+          /*Create and add new parent Ladder Container*/
           var divs = document.querySelectorAll(".ladder");
           // create the container div
           var dv = document.createElement("div");
@@ -154,6 +154,7 @@
             for (const mutation of mutationList) {
               if (mutation.type === "childList") {
                 console.log("A child node has been added or removed.");
+                divs = document.querySelectorAll(".ladder");
                 addLadderContainer();
               } else if (mutation.type === "attributes") {
                 console.log(
