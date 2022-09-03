@@ -80,9 +80,7 @@ sidebar {
 	grid-gap: 4px;
 	height: 5.8vw;
   }
-  #picker {
-	display: none;
-  }
+  
   #picker .ladder {
 	grid-template-columns: repeat(20, 1fr);
 	grid-template-rows: 1fr 1fr;
