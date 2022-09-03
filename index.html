@@ -661,14 +661,14 @@
                 currentChipColor.style.backgroundColor =
                   arr[index].style.backgroundColor;
 
-                let rgb = arr[index];
+                let rgbString = arr[index];
 
                 let colors = ["red", "green", "blue", "alpha"];
 
                 // Getting the index of "(" and ")"
                 // by using the indexOf() method
-                let colorArr = rgb
-                  .slice(rgb.indexOf("(") + 1, rgb.indexOf(")"))
+                let colorArr = rgbString
+                  .slice(rgbString.indexOf("(") + 1, rgbString.indexOf(")"))
                   .split(", ");
 
                 let obj = new Object();
