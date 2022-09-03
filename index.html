@@ -605,7 +605,7 @@
           colors.reverse();
           colors.forEach((ladder) => {
             page.appendChild(makeLadder(ladder));
-            document.querySelector("sidebar").innerHTML +=
+            document.getElementsByTagName("sidebar")[0].innerHTML +=
               "<p>Best Munsell Chip<br></p><div class='best-chip'></div><p>Selected Munsell Chip<br></p><div class='current-chip'></div>";
           });
         });
