@@ -135,14 +135,43 @@
             }
           }
 
+          /*Create and add new parent Ladder Container*/
+
           var divs = document.querySelectorAll(".ladder");
-          var thePage = document.getElementById("page");
           // create the container div
           var dv = document.createElement("div");
           // apply class to container div
           dv.setAttribute("id", "ladder-container");
 
-          thePage.addEventListener("change", addLadderContainer());
+          //Check whether element is added
+          window.onload = function () {
+            var targetNode = document.getElementById("page");
+
+            var config = {
+              attributes: true,
+              childList: true,
+              subtree: true,
+            };
+
+            var observer = new MutationObserver(callback);
+
+            observer.observe(targetNode, config);
+          };
+
+          // Callback function to execute when mutations are observed
+          var callback = function (mutationsList) {
+            for (var mutation of mutationsList) {
+              if (mutation.type == "childList") {
+                console.log("A child node has been added or removed.");
+                addLadderContainer();
+              } else if (mutation.type == "attributes") {
+                console.log(
+                  "The " + mutation.attributeName + " attribute was modified."
+                );
+              }
+            }
+          };
+
           function addLadderContainer() {
             // find out all those divs having class C
             for (var i = 0; i < divs.length; i++) {
