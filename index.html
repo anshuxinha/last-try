@@ -135,50 +135,50 @@
             }
           }
 
-          /*Create and add new parent Ladder Container*/
-          var divs = document.querySelectorAll(".ladder");
-          // create the container div
-          var dv = document.createElement("div");
-          // apply class to container div
-          dv.setAttribute("id", "ladder-container");
+          // /*Create and add new parent Ladder Container*/
+          // var divs = document.querySelectorAll(".ladder");
+          // // create the container div
+          // var dv = document.createElement("div");
+          // // apply class to container div
+          // dv.setAttribute("id", "ladder-container");
 
-          //Check whether element is added
-          // Select the node that will be observed for mutations
-          const targetNode = document.getElementById("page");
+          // //Check whether element is added
+          // // Select the node that will be observed for mutations
+          // const targetNode = document.getElementById("page");
 
-          // Options for the observer (which mutations to observe)
-          const config = { attributes: true, childList: true, subtree: true };
+          // // Options for the observer (which mutations to observe)
+          // const config = { attributes: true, childList: true, subtree: true };
 
-          // Callback function to execute when mutations are observed
-          const callback = (mutationList, observer) => {
-            for (const mutation of mutationList) {
-              if (mutation.type === "childList") {
-                console.log("A child node has been added or removed.");
-                divs = document.querySelectorAll(".ladder");
-                addLadderContainer();
-              } else if (mutation.type === "subtree") {
-                console.log(
-                  "The ${mutation.attributeName} attribute was modified."
-                );
-              }
-            }
-          };
+          // // Callback function to execute when mutations are observed
+          // const callback = (mutationList, observer) => {
+          //   for (const mutation of mutationList) {
+          //     if (mutation.type === "childList") {
+          //       console.log("A child node has been added or removed.");
+          //       divs = document.querySelectorAll(".ladder");
+          //       addLadderContainer();
+          //     } else if (mutation.type === "subtree") {
+          //       console.log(
+          //         "The ${mutation.attributeName} attribute was modified."
+          //       );
+          //     }
+          //   }
+          // };
 
-          // Create an observer instance linked to the callback function
-          const observer = new MutationObserver(callback);
+          // // Create an observer instance linked to the callback function
+          // const observer = new MutationObserver(callback);
 
-          // Start observing the target node for configured mutations
-          observer.observe(targetNode, config);
+          // // Start observing the target node for configured mutations
+          // observer.observe(targetNode, config);
 
-          function addLadderContainer() {
-            // find out all those divs having class C
-            for (var i = 0; i < divs.length; i++) {
-              dv.appendChild(divs[i]);
-            }
+          // function addLadderContainer() {
+          //   // find out all those divs having class C
+          //   for (var i = 0; i < divs.length; i++) {
+          //     dv.appendChild(divs[i]);
+          //   }
 
-            // finally append the container div to page
-            targetNode.appendChild(dv);
-          }
+          //   // finally append the container div to page
+          //   targetNode.appendChild(dv);
+          // }
 
           /*Scroll to Munsell*/
           function waitForScroll() {
