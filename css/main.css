@@ -13,6 +13,8 @@ html {
 sidebar {
 	background: #222;
 	float:left;
+	display: flex;
+	flex-direction: column;
 }
 .ladder {
 	margin-left: 20%;
