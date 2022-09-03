@@ -67,15 +67,6 @@
     <div class="copyMessage">Text copied</div>
 
     <script>
-      /*isInt function*/
-      function isInt(value) {
-        return (
-          !isNaN(value) &&
-          (function (x) {
-            return (x | 0) === x;
-          })(parseFloat(value))
-        );
-      }
       /*Hex to HSL*/
       function hexToHSL(H) {
         // Convert hex to RGB first
@@ -305,25 +296,6 @@
           hexValue.onclick = function () {
             usefulFunctions.copyHexColor(this.id);
           };
-          const munsellValue = document.createElement("small");
-          const munsellValueText = document.createTextNode(() => {
-            var allSwatches = document.querySelectorAll(
-              "#page .ladder .swatch"
-            );
-            var cacheSwatchColor;
-
-            for (let i = 0; i < allSwatches.length; i++) {
-              if (isInt(i / 101)) {
-                cacheSwatchColor = allSwatches[i].textContent;
-              }
-              return cacheSwatchColor;
-            }
-          });
-          console.log(munsellValueText);
-          munsellValue.onselectstart = () => {
-            return false;
-          };
-          munsellValue.appendChild(munsellValueText);
 
           const descContainer = document.createElement("div");
           descContainer.classList.add("descContainer");
@@ -334,7 +306,7 @@
           const colorContainer = document.createElement("div");
           descContainer.appendChild(colorDesc);
           descContainer.appendChild(hexValue);
-          descContainer.appendChild(munsellValue);
+
           descContainer.appendChild(colorTemperature);
           colorContainer.classList.add("colorContainer");
           colorContainer.setAttribute("id", "colorContainer" + colorIndex);
