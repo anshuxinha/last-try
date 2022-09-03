@@ -16,6 +16,8 @@ sidebar {
 	display: flex;
 	flex-direction: column;
 	margin-top:50px;
+	justify-content: center;
+	align-items: center;
 }
 .ladder {
 	margin-left: 20%;
