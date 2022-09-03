@@ -20,7 +20,7 @@ sidebar {
 .ladder {
 	margin-left: 20%;
 }
-#best-chip, #current-chip {
+.best-chip, .current-chip {
 	width: 100px;
 	height: 50px;
 	border: 1px solid #f2f2f2;
