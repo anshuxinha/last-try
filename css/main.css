@@ -20,7 +20,7 @@ sidebar {
 	align-items: center;
 	padding: 20px 35px
 }
-.ladder {
+#page.ladder {
 	margin-left: 20%;
 }
 .best-chip, .current-chip {
