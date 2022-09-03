@@ -660,11 +660,10 @@
               arr[index].addEventListener("click", () => {
                 currentChipColor.style.backgroundColor =
                   arr[index].style.backgroundColor;
-                rgbCode.textContent =
-                  "RGB: " + arr[index].style.backgroundColor;
+                rgbCode.textContent = arr[index].style.backgroundColor;
 
+                /*Convert RGB to HSV*/
                 let rgbString = arr[index].style.backgroundColor;
-
                 let colors = ["red", "green", "blue", "alpha"];
 
                 // Getting the index of "(" and ")"
@@ -680,6 +679,7 @@
                   obj[colors[i]] = k;
                 });
 
+                /*Output HSV*/
                 hsvCode.textContent = "HSV: " + colorArr;
               });
             }
