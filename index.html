@@ -613,7 +613,8 @@
               arr[index].addEventListener("click", () => {
                 currentChipColor.style.backgroundColor =
                   arr[index].style.backgroundColor;
-                rgbCode.textContent += arr[index].style.backgroundColor;
+                rgbCode.textContent =
+                  "RGB: " + arr[index].style.backgroundColor;
               });
             }
           });
